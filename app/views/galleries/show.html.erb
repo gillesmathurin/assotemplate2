@@ -13,7 +13,7 @@
             
             <table>
                 <tr>
-                    <td><%= image_tag(@gallery.photo1.url(:thumb)) %></td>
+                    <td><%= link_to image_tag(@gallery.photo1.url(:thumb)),@gallery.photo1.url(:medium), {:rel => "lightbox"} %></td>
                     <td><%= image_tag(@gallery.photo2.url(:thumb)) %></td>
                     <td><%= image_tag(@gallery.photo3.url(:thumb)) %></td>
                     <td><%= image_tag(@gallery.photo4.url(:thumb)) %></td>
