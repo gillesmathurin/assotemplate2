@@ -1,23 +1,13 @@
-<h1>New faq</h1>
+<h1>Nouveau faq</h1>
 
 <% form_for(@faq) do |f| %>
   <%= f.error_messages %>
 
+  <%= render :partial => 'form', :locals => {:f => f} %>
+
   <p>
-    <%= f.label :question %><br />
-    <%= f.text_field :question %>
-  </p>
-  <p>
-    <%= f.label :reponse %><br />
-    <%= f.text_area :reponse %>
-  </p>
-  <p>
-    <%= f.label :association_id %><br />
-    <%= f.text_field :association_id %>
-  </p>
-  <p>
-    <%= f.submit 'Create' %>
+    <%= f.submit 'Enregistrer' %>
   </p>
 <% end %>
 
-<%= link_to 'Back', faqs_path %>
+<%= link_to 'Retour', faqs_path %>

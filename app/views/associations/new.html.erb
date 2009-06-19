@@ -1,63 +1,19 @@
-<h1>New association</h1>
+<div id="yui-main">
+    <div class="yui-b">
+        <div class="yui-g">
+            <h1>Enregistrer les informations sur l'association</h1>
 
-<% form_for(@association) do |f| %>
-  <%= f.error_messages %>
+            <% form_for(@association), :html => {:multipart => true} do |f| %>
+              <%= f.error_messages %>
 
-  <p>
-    <%= f.label :nom %><br />
-    <%= f.text_field :nom %>
-  </p>
-  <p>
-    <%= f.label :adresse %><br />
-    <%= f.text_field :adresse %>
-  </p>
-  <p>
-    <%= f.label :cp %><br />
-    <%= f.text_field :cp %>
-  </p>
-  <p>
-    <%= f.label :ville %><br />
-    <%= f.text_field :ville %>
-  </p>
-  <p>
-    <%= f.label :tel %><br />
-    <%= f.text_field :tel %>
-  </p>
-  <p>
-    <%= f.label :fax %><br />
-    <%= f.text_field :fax %>
-  </p>
-  <p>
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </p>
-  <p>
-    <%= f.label :about_us %><br />
-    <%= f.text_area :about_us %>
-  </p>
-  <p>
-    <%= f.label :date_creation %><br />
-    <%= f.date_select :date_creation %>
-  </p>
-  <p>
-    <%= f.label :banniere_file_name %><br />
-    <%= f.text_field :banniere_file_name %>
-  </p>
-  <p>
-    <%= f.label :banniere_file_size %><br />
-    <%= f.text_field :banniere_file_size %>
-  </p>
-  <p>
-    <%= f.label :banniere_content_type %><br />
-    <%= f.text_field :banniere_content_type %>
-  </p>
-  <p>
-    <%= f.label :banniere_updated_at %><br />
-    <%= f.datetime_select :banniere_updated_at %>
-  </p>
-  <p>
-    <%= f.submit 'Create' %>
-  </p>
-<% end %>
+              <%= render :partial => 'form', :locals => {:f => f} %>
 
-<%= link_to 'Back', associations_path %>
+              <p>
+                <%= f.submit 'Enregistrer' %>
+              </p>
+            <% end %>
+
+            <%= link_to 'Retour', associations_path %>
+        </div>
+    </div>
+</div>

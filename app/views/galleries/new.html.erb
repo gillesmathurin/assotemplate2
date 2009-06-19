@@ -1,119 +1,13 @@
-<h1>New gallery</h1>
+<h1>Nouvelle gallerie</h1>
 
-<% form_for(@gallery) do |f| %>
+<% form_for(@gallery), :html => {:multipart => true} do |f| %>
   <%= f.error_messages %>
 
+  <%= render :partial => 'form', :locals => {:f => f} %>
+
   <p>
-    <%= f.label :user_id %><br />
-    <%= f.text_field :user_id %>
-  </p>
-  <p>
-    <%= f.label :titre %><br />
-    <%= f.text_field :titre %>
-  </p>
-  <p>
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </p>
-  <p>
-    <%= f.label :photo1_file_name %><br />
-    <%= f.text_field :photo1_file_name %>
-  </p>
-  <p>
-    <%= f.label :photo1_file_content_type %><br />
-    <%= f.text_field :photo1_file_content_type %>
-  </p>
-  <p>
-    <%= f.label :photo1_file_size %><br />
-    <%= f.text_field :photo1_file_size %>
-  </p>
-  <p>
-    <%= f.label :photo1_updated_at %><br />
-    <%= f.text_field :photo1_updated_at %>
-  </p>
-  <p>
-    <%= f.label :photo2_file_name %><br />
-    <%= f.text_field :photo2_file_name %>
-  </p>
-  <p>
-    <%= f.label :photo2_content_type %><br />
-    <%= f.text_field :photo2_content_type %>
-  </p>
-  <p>
-    <%= f.label :photo2_file_size %><br />
-    <%= f.text_field :photo2_file_size %>
-  </p>
-  <p>
-    <%= f.label :photo2_updated_at %><br />
-    <%= f.datetime_select :photo2_updated_at %>
-  </p>
-  <p>
-    <%= f.label :photo3_file_name %><br />
-    <%= f.text_field :photo3_file_name %>
-  </p>
-  <p>
-    <%= f.label :photo3_content_type %><br />
-    <%= f.text_field :photo3_content_type %>
-  </p>
-  <p>
-    <%= f.label :photo3_file_size %><br />
-    <%= f.text_field :photo3_file_size %>
-  </p>
-  <p>
-    <%= f.label :photo3_updated_at %><br />
-    <%= f.datetime_select :photo3_updated_at %>
-  </p>
-  <p>
-    <%= f.label :photo4_file_name %><br />
-    <%= f.text_field :photo4_file_name %>
-  </p>
-  <p>
-    <%= f.label :photo4_content_type %><br />
-    <%= f.text_field :photo4_content_type %>
-  </p>
-  <p>
-    <%= f.label :photo4_file_size %><br />
-    <%= f.text_field :photo4_file_size %>
-  </p>
-  <p>
-    <%= f.label :photo4_updated_at %><br />
-    <%= f.datetime_select :photo4_updated_at %>
-  </p>
-  <p>
-    <%= f.label :photo5_file_name %><br />
-    <%= f.text_field :photo5_file_name %>
-  </p>
-  <p>
-    <%= f.label :photo5_content_type %><br />
-    <%= f.text_field :photo5_content_type %>
-  </p>
-  <p>
-    <%= f.label :photo5_file_size %><br />
-    <%= f.text_field :photo5_file_size %>
-  </p>
-  <p>
-    <%= f.label :photo5_updated_at %><br />
-    <%= f.datetime_select :photo5_updated_at %>
-  </p>
-  <p>
-    <%= f.label :photo6_file_name %><br />
-    <%= f.text_field :photo6_file_name %>
-  </p>
-  <p>
-    <%= f.label :photo6_content_type %><br />
-    <%= f.text_field :photo6_content_type %>
-  </p>
-  <p>
-    <%= f.label :photo6_file_size %><br />
-    <%= f.text_field :photo6_file_size %>
-  </p>
-  <p>
-    <%= f.label :photo6_updated_at %><br />
-    <%= f.datetime_select :photo6_updated_at %>
-  </p>
-  <p>
-    <%= f.submit 'Create' %>
+    <%= f.submit 'Enregistrer' %>
   </p>
 <% end %>
 
-<%= link_to 'Back', galleries_path %>
+<%= link_to 'Retour', galleries_path %>

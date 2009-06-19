@@ -1,24 +1,45 @@
-<h1>Listing comments</h1>
+<div id="yui-main">
+    <div class="yui-b">
+        <div class="yui-g">
+            <h1 class="accroche">Commentaires de l'article <%= @article.titre %></h1>
+            <%= link_to "Retour à l'article", article_path(@article) %>
+        </div>
+        
+        <% if !@comments.blank? %>
+        
+          <% for comment in @comments %>
+             <div class="yui-g">
+                 <p>
+                    <b>De :</b> <%= comment.author.login %> publié le : <%= I18n.l comment.created_at %>
+                 </p>
+                 <%= comment.body %>
+             </div>
+             
+             <% if admin? %>
+                 <div class="yui-g">
+                     <%= link_to "Modifier", edit_article_comment_path(@article, comment), :class => "button_link2" %> |
+                     <%= link_to "Supprimer", article_comment_path(@article, comment), :method => :delete,
+                     :confirm => "En êtes vous sur ?", :class => "button_link2" %>
+                 </div>
+             <% end %>
+             
+          <% end %>
+          
+        <% else %>
+        
+            <div class="yui-g">
+                Pas de commentaires pour cet article, <%= link_to "Ajouter le votre", new_article_comment_path(@article, comment) %>
+            </div>
+            
+        <% end %>
+        
+        <div class="yui-g">
+            <%= link_to "Retour à l'article", article_path(@article) %>
+        </div>
+    </div>
+    
+</div>
 
-<table>
-  <tr>
-    <th>Auteur</th>
-    <th>Article</th>
-    <th>Body</th>
-  </tr>
-
-<% @comments.each do |comment| %>
-  <tr>
-    <td><%=h comment.auteur %></td>
-    <td><%=h comment.article_id %></td>
-    <td><%=h comment.body %></td>
-    <td><%= link_to 'Show', comment %></td>
-    <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
-    <td><%= link_to 'Destroy', comment, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New comment', new_comment_path %>
+<div class="yui-b sidebar">
+    <%= render :partial => "shared/identification" %>
+</div>

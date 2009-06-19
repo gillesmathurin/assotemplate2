@@ -1,36 +1,46 @@
-<h1>Listing evenements</h1>
+<div id="yui-main">
+    <div class="yui-b">
+        
+        <div class="yui-g">
+            <h1 class="accroche">Evenement du Mois</h1>
+        </div>
+                
+        <div class="yui-gc">
+            <div class="yui-u first">
+                 <% if !@evenements.blank? %>
+                      <% for event in @evenements %>
+                        <p>
+                            <b><%= event.titre %></b> - <pre>date : <%= I18n.l event.date %>, lieu : <%= event.lieu %>, de : <%= event.hdebut.strftime("%H:%M") if event.hdebut %> à : <%= event.hfin.strftime("%H:%M") if event.hfin %></pre>
+                        </p>
+                        <p>
+                            <%= truncate(event.description, :length => 160) %><br/>
+                            <%= link_to "voir plus …", evenement_path(event) %>
+                        </p>
+                        
+                        <% if admin? %>
+                            <p>
+                                <%= link_to "Modifier", edit_evenement_path(event), :class => "button_link2" %> | <%= link_to "Supprimer", evenement_path(event), :method => :delete, :class => "button_link2" %>
+                            </p>
+                         <% end %>
+                      <% end %>
+                 <% else %>
+                     <p>Pas d'événements programmés pour ce mois</p>
+                 <% end %>
+                 
+            </div>
 
-<table>
-  <tr>
-    <th>Date</th>
-    <th>H debut</th>
-    <th>H fin</th>
-    <th>Lieu</th>
-    <th>Description</th>
-    <th>Picture file name</th>
-    <th>Picture content type</th>
-    <th>Picture file size</th>
-    <th>Picture updated at</th>
-  </tr>
+            <div class="yui-u">
+                <h3 class="green">Calendrier</h3>
+                <% @date = Date.today %>
 
-<% @evenements.each do |evenement| %>
-  <tr>
-    <td><%=h evenement.date %></td>
-    <td><%=h evenement.h_debut %></td>
-    <td><%=h evenement.h_fin %></td>
-    <td><%=h evenement.lieu %></td>
-    <td><%=h evenement.description %></td>
-    <td><%=h evenement.picture_file_name %></td>
-    <td><%=h evenement.picture_content_type %></td>
-    <td><%=h evenement.picture_file_size %></td>
-    <td><%=h evenement.picture_updated_at %></td>
-    <td><%= link_to 'Show', evenement %></td>
-    <td><%= link_to 'Edit', edit_evenement_path(evenement) %></td>
-    <td><%= link_to 'Destroy', evenement, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
+                <%= calendar_for(@date.year, @date.month, :next_and_previous_month => [ "%b", lambda { |@date| evenements_du_mois_path(@date) }], &calendar_events_proc) %>
+            </div>
+        </div>       
+    </div>
+</div>
 
-<br />
+<div class="yui-b sidebar">
+    <%= render :partial => "shared/identification" %>
+</div>
 
-<%= link_to 'New evenement', new_evenement_path %>
+

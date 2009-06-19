@@ -1,40 +1,21 @@
-<h1>Editing article</h1>
+<div id="yui-main">
+    <div class="yui-b">
+        <div class="yui-g">
+            <h1>Modifier un Article</h1>
+        </div>
+        
+        <div class="yui-g">
+            <% form_for(@article), :html => {:multipart => true} do |f| %>
+              <%= f.error_messages %>
 
-<% form_for(@article) do |f| %>
-  <%= f.error_messages %>
+              <%= render :partial => 'form', :locals => {:f => f} %>
 
-  <p>
-    <%= f.label :titre %><br />
-    <%= f.text_field :titre %>
-  </p>
-  <p>
-    <%= f.label :user_id %><br />
-    <%= f.text_field :user_id %>
-  </p>
-  <p>
-    <%= f.label :body %><br />
-    <%= f.text_area :body %>
-  </p>
-  <p>
-    <%= f.label :photo_file_name %><br />
-    <%= f.text_field :photo_file_name %>
-  </p>
-  <p>
-    <%= f.label :photo_file_size %><br />
-    <%= f.text_field :photo_file_size %>
-  </p>
-  <p>
-    <%= f.label :photo_content_type %><br />
-    <%= f.text_field :photo_content_type %>
-  </p>
-  <p>
-    <%= f.label :photo_updated_at %><br />
-    <%= f.datetime_select :photo_updated_at %>
-  </p>
-  <p>
-    <%= f.submit 'Update' %>
-  </p>
-<% end %>
+              <p>
+                <%= f.submit 'Mettre à jour' %>
+              </p>
+            <% end %>
 
-<%= link_to 'Show', @article %> |
-<%= link_to 'Back', articles_path %>
+            <%= link_to 'Retour', articles_path %>
+        </div>
+    </div>
+</div>

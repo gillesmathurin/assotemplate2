@@ -1,37 +1,56 @@
-<p>
-  <b>Titre:</b>
-  <%=h @article.titre %>
-</p>
+<div id="yui-main">
+    <div class="yui-b">
+        <div class="yui-g">
+            <h1 class="accroche"><%= @article.titre %></h1>
+        </div>
+        
+        <div class="yui-g">
+            <p class="article_photo">
+                <%= image_tag @article.photo.url(:thumb) if has_photo?(@article) %>
+            </p>        
+            <p>
+                <%= @article.body %>
+            </p>
+            
+            <p>
+                <%= link_to "Retour", articles_path() %><br/>
+                <%- if admin? -%>
+                    <%= link_to "Modifier", edit_article_path(@article) %> |
+                    <%= link_to "Supprimer", article_path(@article), :method => :delete,
+                     :confirm => "En êtes vous sur ?" %>
+                <%- end -%>
+            </p>
+        </div>
+        
+        <div class="yui-g">
+            
+            <h3 class="green">Vos commentaires</h3>
+            <p>
+                <%= link_to "(+) Ajouter un commentaire", new_article_comment_path(@article) , :class => "button_link" %> | <%= link_to "Tous les commentaires", article_comments_path(@article), :class => "button_link" %>
+            </p>
+            
+            <% if !@article.comments.last_five.blank? %>
+                <% for comment in @article.comments.last_five %>
+                      <div class="comment">
+                          <b>De : <%= comment.author.login %></b>
+                          <%= comment.body %>
+                          <% if admin? %>
+                              <%= link_to "(-) Supprimer", article_comment_path(@article, comment),
+                               :method => :delete, :class => "button_link2" %>
+                          <% end %>
+                      </div>
+                    <% end %>
+            <% else %>
+              <p>Pas de commentaires pour cet article.</p>
+            <% end %>
+    </div>
+</div>
 
-<p>
-  <b>User:</b>
-  <%=h @article.user_id %>
-</p>
+<div class="yui-b sidebar">
+    
+</div>
 
-<p>
-  <b>Body:</b>
-  <%=h @article.body %>
-</p>
 
-<p>
-  <b>Photo file name:</b>
-  <%=h @article.photo_file_name %>
-</p>
-
-<p>
-  <b>Photo file size:</b>
-  <%=h @article.photo_file_size %>
-</p>
-
-<p>
-  <b>Photo content type:</b>
-  <%=h @article.photo_content_type %>
-</p>
-
-<p>
-  <b>Photo updated at:</b>
-  <%=h @article.photo_updated_at %>
-</p>
 
 
 <%= link_to 'Edit', edit_article_path(@article) %> |

@@ -1,44 +1,40 @@
-<h1>Listing associations</h1>
+<div id="yui-main">
+    <div class="yui-b">
+        <div class="yui-g">
+            <!-- TODO : About block -->
+            <h1>Page d'accueil</h1>
+        </div>
+        
+        <div class="yui-g">
+            <!-- TODO : Articles block -->
+            <h1>Articles récents</h1>
+            <% @articles.each do |article| %>
+            <div class="liste-article">
+                <p class="info-auteur">
+                    <%= image_tag(article.auteur.avatar.url(:thumb)) %><br/>
+                    Auteur : <%= article.auteur.name %><br/>
+                    publié le : <%= I18n.l article.created_at %>
+                </p>
+                <p class="resume-article">
+                    <%= truncate(article.body, :length => 160) %>
+                </p>
+            </div>
+            <% end %>    
+        </div>
+        
+        <div class="yui-g">
+            <h1>A ne pas manquer</h1>
+            <div class="yui-u first">
+                <p>Premiere colonne</p>
+            </div>
+            <div class="yui-u">
+                <p>Deuxieme colonne</p>
+            </div>
+            <!-- TODO : infos divers block -->
+        </div>
+    </div>
+</div>
 
-<table>
-  <tr>
-    <th>Nom</th>
-    <th>Adresse</th>
-    <th>Cp</th>
-    <th>Ville</th>
-    <th>Tel</th>
-    <th>Fax</th>
-    <th>Email</th>
-    <th>About us</th>
-    <th>Date creation</th>
-    <th>Banniere file name</th>
-    <th>Banniere file size</th>
-    <th>Banniere content type</th>
-    <th>Banniere updated at</th>
-  </tr>
-
-<% @associations.each do |association| %>
-  <tr>
-    <td><%=h association.nom %></td>
-    <td><%=h association.adresse %></td>
-    <td><%=h association.cp %></td>
-    <td><%=h association.ville %></td>
-    <td><%=h association.tel %></td>
-    <td><%=h association.fax %></td>
-    <td><%=h association.email %></td>
-    <td><%=h association.about_us %></td>
-    <td><%=h association.date_creation %></td>
-    <td><%=h association.banniere_file_name %></td>
-    <td><%=h association.banniere_file_size %></td>
-    <td><%=h association.banniere_content_type %></td>
-    <td><%=h association.banniere_updated_at %></td>
-    <td><%= link_to 'Show', association %></td>
-    <td><%= link_to 'Edit', edit_association_path(association) %></td>
-    <td><%= link_to 'Destroy', association, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New association', new_association_path %>
+<div class="yui-b sidebar">
+    <%= render :partial => "shared/identification" %>
+</div>

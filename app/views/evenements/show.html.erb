@@ -1,48 +1,33 @@
-<p>
-  <b>Date:</b>
-  <%=h @evenement.date %>
-</p>
+<div id="yui-main">
+    <div class="yui-b">
+        <div class="yui-g">
+            <h1 class="accroche"><%= @evenement.titre %></h1>
+            <p>
+                <b>Date :</b><%= I18n.l @evenement.date %> | <b>Lieu :</b><%= @evenement.lieu %><br/>
+                <b>De :</b> <%= @evenement.hdebut.strftime("%H:%M") if @evenement.hdebut %> <b>À :</b> <%= @evenement.hfin.strftime("%H:%M") if @evenement.hfin %>
+            </p>
+        </div>
+        
+        <div class="yui-g">
+            <p class="article_photo">
+                <%= image_tag(@evenement.picture.url) if has_photo?(@evenement) %>
+            </p>
+            <%= (@evenement.description) %>
+            <p>
+                <%= link_to "Retour", evenements_path() %>
+            </p>
+        </div>
+        
+        <div class="yui-g">
+            <% if admin? %>
+                <p>
+                    <%= link_to "Modifier", edit_evenement_path(@evenement), :class => "button_link2" %> | <%= link_to "Supprimer", evenement_path(@evenement), :method => :delete, :class => "button_link2" %>
+                </p>
+             <% end %>
+        </div>
+    </div>
+</div>
 
-<p>
-  <b>H debut:</b>
-  <%=h @evenement.h_debut %>
-</p>
-
-<p>
-  <b>H fin:</b>
-  <%=h @evenement.h_fin %>
-</p>
-
-<p>
-  <b>Lieu:</b>
-  <%=h @evenement.lieu %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%=h @evenement.description %>
-</p>
-
-<p>
-  <b>Picture file name:</b>
-  <%=h @evenement.picture_file_name %>
-</p>
-
-<p>
-  <b>Picture content type:</b>
-  <%=h @evenement.picture_content_type %>
-</p>
-
-<p>
-  <b>Picture file size:</b>
-  <%=h @evenement.picture_file_size %>
-</p>
-
-<p>
-  <b>Picture updated at:</b>
-  <%=h @evenement.picture_updated_at %>
-</p>
-
-
-<%= link_to 'Edit', edit_evenement_path(@evenement) %> |
-<%= link_to 'Back', evenements_path %>
+<div class="yui-b sidebar">
+    <%= render :partial => "shared/identification" %>
+</div>

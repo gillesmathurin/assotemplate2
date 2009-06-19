@@ -1,24 +1,14 @@
-<h1>Editing comment</h1>
+<h1>Modifier le commentaire</h1>
 
 <% form_for(@comment) do |f| %>
   <%= f.error_messages %>
 
+  <%= render :partial => 'form', :locals => {:f => f} %>
+  
   <p>
-    <%= f.label :auteur %><br />
-    <%= f.text_field :auteur %>
-  </p>
-  <p>
-    <%= f.label :article_id %><br />
-    <%= f.text_field :article_id %>
-  </p>
-  <p>
-    <%= f.label :body %><br />
-    <%= f.text_area :body %>
-  </p>
-  <p>
-    <%= f.submit 'Update' %>
+    <%= f.submit 'Mettre à jour' %>
   </p>
 <% end %>
 
-<%= link_to 'Show', @comment %> |
-<%= link_to 'Back', comments_path %>
+<%= link_to 'Voir', @comment %> |
+<%= link_to 'Retour', comments_path %>

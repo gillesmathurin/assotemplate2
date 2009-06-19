@@ -1,138 +1,46 @@
-<p>
-  <b>User:</b>
-  <%=h @gallery.user_id %>
-</p>
+<div id="yui-main">
+    <div class="yui-b">
+        <div class="yui-g">
+            <p>
+              <b>Titre:</b>
+              <%=h @gallery.titre %>
+            </p>
 
-<p>
-  <b>Titre:</b>
-  <%=h @gallery.titre %>
-</p>
+            <p>
+              <b>Description:</b>
+              <%=h @gallery.description %>
+            </p>
+            
+            <table>
+                <tr>
+                    <td><%= image_tag(@gallery.photo1.url(:thumb)) %></td>
+                    <td><%= image_tag(@gallery.photo2.url(:thumb)) %></td>
+                    <td><%= image_tag(@gallery.photo3.url(:thumb)) %></td>
+                    <td><%= image_tag(@gallery.photo4.url(:thumb)) %></td>
+                    <td><%= image_tag(@gallery.photo5.url(:thumb)) %></td>
+                    <td><%= image_tag(@gallery.photo6.url(:thumb)) %></td>
+                </tr>
+                <% if logged_in? && (current_user.login == @membre.login) %>
+                <tr>
+                    <td>
+                        <%= link_to "Supprimer", gallery_path(@gallery), :method => :delete, :confirm => "En êtes vous sur ?" %>
+                    </td>
+                </tr>
+                <% end %>
+            </table>
+        </div>
+        
+        <div class="yui-g">
+            <%= link_to 'Modifier', edit_user_gallery_path(@membre.id) %> |
+            <%= link_to 'Retour', user_galleries_path(@membre.id) %>
+        </div>
+    </div>
+</div>
 
-<p>
-  <b>Description:</b>
-  <%=h @gallery.description %>
-</p>
-
-<p>
-  <b>Photo1 file name:</b>
-  <%=h @gallery.photo1_file_name %>
-</p>
-
-<p>
-  <b>Photo1 file content type:</b>
-  <%=h @gallery.photo1_file_content_type %>
-</p>
-
-<p>
-  <b>Photo1 file size:</b>
-  <%=h @gallery.photo1_file_size %>
-</p>
-
-<p>
-  <b>Photo1 updated at:</b>
-  <%=h @gallery.photo1_updated_at %>
-</p>
-
-<p>
-  <b>Photo2 file name:</b>
-  <%=h @gallery.photo2_file_name %>
-</p>
-
-<p>
-  <b>Photo2 content type:</b>
-  <%=h @gallery.photo2_content_type %>
-</p>
-
-<p>
-  <b>Photo2 file size:</b>
-  <%=h @gallery.photo2_file_size %>
-</p>
-
-<p>
-  <b>Photo2 updated at:</b>
-  <%=h @gallery.photo2_updated_at %>
-</p>
-
-<p>
-  <b>Photo3 file name:</b>
-  <%=h @gallery.photo3_file_name %>
-</p>
-
-<p>
-  <b>Photo3 content type:</b>
-  <%=h @gallery.photo3_content_type %>
-</p>
-
-<p>
-  <b>Photo3 file size:</b>
-  <%=h @gallery.photo3_file_size %>
-</p>
-
-<p>
-  <b>Photo3 updated at:</b>
-  <%=h @gallery.photo3_updated_at %>
-</p>
-
-<p>
-  <b>Photo4 file name:</b>
-  <%=h @gallery.photo4_file_name %>
-</p>
-
-<p>
-  <b>Photo4 content type:</b>
-  <%=h @gallery.photo4_content_type %>
-</p>
-
-<p>
-  <b>Photo4 file size:</b>
-  <%=h @gallery.photo4_file_size %>
-</p>
-
-<p>
-  <b>Photo4 updated at:</b>
-  <%=h @gallery.photo4_updated_at %>
-</p>
-
-<p>
-  <b>Photo5 file name:</b>
-  <%=h @gallery.photo5_file_name %>
-</p>
-
-<p>
-  <b>Photo5 content type:</b>
-  <%=h @gallery.photo5_content_type %>
-</p>
-
-<p>
-  <b>Photo5 file size:</b>
-  <%=h @gallery.photo5_file_size %>
-</p>
-
-<p>
-  <b>Photo5 updated at:</b>
-  <%=h @gallery.photo5_updated_at %>
-</p>
-
-<p>
-  <b>Photo6 file name:</b>
-  <%=h @gallery.photo6_file_name %>
-</p>
-
-<p>
-  <b>Photo6 content type:</b>
-  <%=h @gallery.photo6_content_type %>
-</p>
-
-<p>
-  <b>Photo6 file size:</b>
-  <%=h @gallery.photo6_file_size %>
-</p>
-
-<p>
-  <b>Photo6 updated at:</b>
-  <%=h @gallery.photo6_updated_at %>
-</p>
+<div class="yui-b sidebar">
+    <%= render :partial => "shared/identification" %>
+</div>
 
 
-<%= link_to 'Edit', edit_gallery_path(@gallery) %> |
-<%= link_to 'Back', galleries_path %>
+
+

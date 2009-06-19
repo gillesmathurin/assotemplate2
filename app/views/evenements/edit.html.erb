@@ -1,48 +1,24 @@
-<h1>Editing evenement</h1>
+<div id="yui-main">
+    <div class="yui-b">
+        <div class="yui-g">
+            <h1 class="accroche">Modifier un événement</h1>
+        </div>
+        
+        <div class="yui-g">
+            <% form_for(@evenement), :html => { :multipart => true } do |f| %>
+              <%= f.error_messages %>
 
-<% form_for(@evenement) do |f| %>
-  <%= f.error_messages %>
+              <%= render :partial => 'form', :locals => {:f => f} %>
 
-  <p>
-    <%= f.label :date %><br />
-    <%= f.date_select :date %>
-  </p>
-  <p>
-    <%= f.label :h_debut %><br />
-    <%= f.datetime_select :h_debut %>
-  </p>
-  <p>
-    <%= f.label :h_fin %><br />
-    <%= f.datetime_select :h_fin %>
-  </p>
-  <p>
-    <%= f.label :lieu %><br />
-    <%= f.text_field :lieu %>
-  </p>
-  <p>
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </p>
-  <p>
-    <%= f.label :picture_file_name %><br />
-    <%= f.text_field :picture_file_name %>
-  </p>
-  <p>
-    <%= f.label :picture_content_type %><br />
-    <%= f.text_field :picture_content_type %>
-  </p>
-  <p>
-    <%= f.label :picture_file_size %><br />
-    <%= f.text_field :picture_file_size %>
-  </p>
-  <p>
-    <%= f.label :picture_updated_at %><br />
-    <%= f.datetime_select :picture_updated_at %>
-  </p>
-  <p>
-    <%= f.submit 'Update' %>
-  </p>
-<% end %>
+              <p>
+                <%= f.submit 'Enregistrer' %>
+              </p>
+            <% end %>
+             <%= link_to "Retour", evenements_path(), :class => "button_link" %>
+        </div>
+    </div>
+</div>
 
-<%= link_to 'Show', @evenement %> |
-<%= link_to 'Back', evenements_path %>
+<div class="yui-b sidebar">
+    <%= render :partial => "shared/identification" %>
+</div>
