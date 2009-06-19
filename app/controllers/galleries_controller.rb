@@ -16,7 +16,11 @@ class GalleriesController < ApplicationController
   # GET /galleries/1
   # GET /galleries/1.xml
   def show
-    @gallery = @membre.galleries.find(params[:id])
+    if @membre
+      @gallery = @membre.galleries.find(params[:id])
+    else
+      @gallery = Gallery.find(params[:id])
+    end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -48,7 +52,7 @@ class GalleriesController < ApplicationController
     respond_to do |format|
       if @gallery.save
         flash[:notice] = 'Gallery was successfully created.'
-        format.html { redirect_to(@gallery) }
+        format.html { redirect_to user_gallery_path(@membre, @gallery) }
         format.xml  { render :xml => @gallery, :status => :created, :location => @gallery }
       else
         format.html { render :action => "new" }

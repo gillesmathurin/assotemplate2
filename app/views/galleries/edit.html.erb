@@ -1,6 +1,6 @@
 <h1>Modifier la gallerie</h1>
 
-<% form_for(@gallery),:html => {:multipart => true} do |f| %>
+<% form_for([@membre, @gallery],:html => {:multipart => true}) do |f| %>
   <%= f.error_messages %>
 
   <%= render :partial => 'form', :locals => {:f => f} %>
