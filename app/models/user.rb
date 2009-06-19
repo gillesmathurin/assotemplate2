@@ -18,14 +18,14 @@ class User < ActiveRecord::Base
   validates_length_of       :email,    :within => 6..100 #r@a.wk
   validates_uniqueness_of   :email
   validates_format_of       :email,    :with => Authentication.email_regex, :message => Authentication.bad_email_message
-  # validates_presence_of     :usertype, :on => :create, :message => "doit être renseigné."
+  validates_presence_of     :usertype, :on => :create, :message => "doit être renseigné."
 
   CATEGORIES = [ ["Super Administrateur", 0], ["Administrateur", 1], ["Membre", 2] ]  
 
   # HACK HACK HACK -- how to do attr_accessible from here?
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
-  attr_accessible :login, :email, :name, :password, :password_confirmation#, :usertype#, :state
+  attr_accessible :login, :email, :name, :password, :password_confirmation, :usertype#, :state
   
   has_many :articles
   has_many :galleries

@@ -11,6 +11,14 @@ class UsersController < ApplicationController
   def new
     @user = User.new
   end
+  
+  def show
+    unless current_user
+      @membre = User.find(params[:id])
+    else
+      @membre = current_user
+    end
+  end
  
   def create
     logout_keeping_session!
