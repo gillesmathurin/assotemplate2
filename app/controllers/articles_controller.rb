@@ -1,12 +1,31 @@
 class ArticlesController < ApplicationController
+  before_filter :admin_login_required, :only => [:new, :edit, :destroy]
+  uses_tiny_mce :options => { :theme => 'simple' }  
+  
   # GET /articles
   # GET /articles.xml
   def index
-    @articles = Article.all
+    @articles = Article.of_the_month
 
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @articles }
+    end
+  end
+  
+  def articles_du_jour
+    @articles = Article.du_jour(params[:day])
+    
+    respond_to do |format|
+      format.html { render :action => "index" }
+    end
+  end
+  
+  def articles_du_mois
+    @articles = Article.of_the_given_month(params[:day].to_time)
+    
+    respond_to do |format|
+      format.html {  }
     end
   end
 
@@ -14,6 +33,7 @@ class ArticlesController < ApplicationController
   # GET /articles/1.xml
   def show
     @article = Article.find(params[:id])
+    @comments = @article.comments.last_five
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,7 +44,7 @@ class ArticlesController < ApplicationController
   # GET /articles/new
   # GET /articles/new.xml
   def new
-    @article = Article.new
+    @article = Article.new(:user_id => current_user)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,6 +61,7 @@ class ArticlesController < ApplicationController
   # POST /articles.xml
   def create
     @article = Article.new(params[:article])
+    @article.author = current_user
 
     respond_to do |format|
       if @article.save

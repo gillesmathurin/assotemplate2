@@ -1,12 +1,31 @@
 class EvenementsController < ApplicationController
+  before_filter :login_required, :only => [:new, :edit, :destroy]
+  uses_tiny_mce :options => { :theme => 'simple' }
+  
   # GET /evenements
   # GET /evenements.xml
   def index
-    @evenements = Evenement.all
+    @evenements = Evenement.of_the_month
 
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @evenements }
+    end
+  end
+  
+  def evenenemts_du_jour
+    @evenements = Evenement.find(:all, :conditions => ['date = ?', params[:day]])
+    
+    respond_to do |format|
+      format.html { render :action => 'index' }
+    end
+  end
+  
+  def evenements_du_mois
+    @evenements = Evenement.of_the_given_month(params[:day].to_date)
+    
+    respond_to do |format|
+      format.html {  }
     end
   end
 

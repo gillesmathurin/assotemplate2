@@ -1,4 +1,6 @@
 class FaqsController < ApplicationController
+  uses_tiny_mce
+  before_filter :admin_login_required, :only => [:new, :edit, :destroy]
   # GET /faqs
   # GET /faqs.xml
   def index

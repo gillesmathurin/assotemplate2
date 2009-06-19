@@ -1,15 +1,24 @@
 class AssociationsController < ApplicationController
+  before_filter :admin_login_required, :only => [:new, :edit, :destroy]
+  uses_tiny_mce :options => {:theme => 'simple'}
+  
   # GET /associations
   # GET /associations.xml
   def index
-    @associations = Association.all
+    @association = Association.first
+    @articles = Article.of_the_week
+    @evenements = Evenement.to_come
+    @galleries = Gallery.last_four
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @associations }
+      format.xml  { render :xml => @association }
     end
   end
-
+  
+  def contact    
+  end
+  
   # GET /associations/1
   # GET /associations/1.xml
   def show

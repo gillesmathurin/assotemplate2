@@ -1,8 +1,11 @@
 class GalleriesController < ApplicationController
+  before_filter :find_membre
+  uses_tiny_mce :options => {:theme => 'simple'}
+  
   # GET /galleries
   # GET /galleries.xml
   def index
-    @galleries = Gallery.all
+    @galleries = @membre.galleries.last_four
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +16,7 @@ class GalleriesController < ApplicationController
   # GET /galleries/1
   # GET /galleries/1.xml
   def show
-    @gallery = Gallery.find(params[:id])
+    @gallery = @membre.galleries.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,7 +27,7 @@ class GalleriesController < ApplicationController
   # GET /galleries/new
   # GET /galleries/new.xml
   def new
-    @gallery = Gallery.new
+    @gallery = @membre.galleries.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,13 +37,13 @@ class GalleriesController < ApplicationController
 
   # GET /galleries/1/edit
   def edit
-    @gallery = Gallery.find(params[:id])
+    @gallery = @membre.galleries.find(params[:id])
   end
 
   # POST /galleries
   # POST /galleries.xml
   def create
-    @gallery = Gallery.new(params[:gallery])
+    @gallery = @membre.galleries.build(params[:gallery])
 
     respond_to do |format|
       if @gallery.save
@@ -57,7 +60,7 @@ class GalleriesController < ApplicationController
   # PUT /galleries/1
   # PUT /galleries/1.xml
   def update
-    @gallery = Gallery.find(params[:id])
+    @gallery = @membre.galleries.find(params[:id])
 
     respond_to do |format|
       if @gallery.update_attributes(params[:gallery])
@@ -81,5 +84,11 @@ class GalleriesController < ApplicationController
       format.html { redirect_to(galleries_url) }
       format.xml  { head :ok }
     end
+  end
+  
+  private
+  
+  def find_membre
+    @membre = User.find(params[:user_id]) if params[:user_id]
   end
 end
