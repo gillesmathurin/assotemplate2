@@ -18,15 +18,34 @@ class User < ActiveRecord::Base
   validates_length_of       :email,    :within => 6..100 #r@a.wk
   validates_uniqueness_of   :email
   validates_format_of       :email,    :with => Authentication.email_regex, :message => Authentication.bad_email_message
+  # validates_presence_of     :usertype, :on => :create, :message => "doit être renseigné."
 
-  
+  CATEGORIES = [ ["Super Administrateur", 0], ["Administrateur", 1], ["Membre", 2] ]  
 
   # HACK HACK HACK -- how to do attr_accessible from here?
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
-  attr_accessible :login, :email, :name, :password, :password_confirmation
-
-
+  attr_accessible :login, :email, :name, :password, :password_confirmation#, :usertype#, :state
+  
+  has_many :articles
+  has_many :galleries
+  belongs_to :association
+  has_attached_file :avatar, :styles => { :thumb => "100x100>", :medium => "300x300>" }
+  
+  # fetch the member and admin category users
+  named_scope :membres, :conditions => ['categorie = ?', 2]
+  named_scope :admins, :conditions => ['categorie = ?', 1]
+    
+  def categorie_to_s
+    case categorie
+    when "0"
+      return "Super Administrateur"
+    when "1"
+      return "Administrateur"
+    when "2"
+      return "Membre"
+    end
+  end
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   #

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090619155933) do
+ActiveRecord::Schema.define(:version => 20090619170151) do
 
   create_table "articles", :force => true do |t|
     t.string   "titre"
@@ -117,7 +117,7 @@ ActiveRecord::Schema.define(:version => 20090619155933) do
     t.datetime "activated_at"
     t.string   "state",                                    :default => "passive"
     t.datetime "deleted_at"
-    t.string   "categorie"
+    t.string   "usertype"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"

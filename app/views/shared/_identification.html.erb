@@ -1,0 +1,20 @@
+<div class="yui-g">
+    <!-- TODO : Register block -->
+    <h1>Devenez Membre</h1>
+    <p>Créer un compte</p>
+    <p>
+        <%= link_to "S'inscrire", register_path() %>
+    </p>
+</div>
+<div class="yui-g">
+    <h1>Déjà Membre ?</h1>
+    <p>
+        <%= link_to "Identifiez-vous", login_path() %>
+    </p>
+</div>
+
+<div class="yui-g">
+    <% if logged_in? %>
+        <%= link_to "Deconnexion", logout_path() %>
+    <% end %>
+</div>
