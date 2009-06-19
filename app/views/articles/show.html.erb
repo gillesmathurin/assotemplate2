@@ -1,0 +1,38 @@
+<p>
+  <b>Titre:</b>
+  <%=h @article.titre %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%=h @article.user_id %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%=h @article.body %>
+</p>
+
+<p>
+  <b>Photo file name:</b>
+  <%=h @article.photo_file_name %>
+</p>
+
+<p>
+  <b>Photo file size:</b>
+  <%=h @article.photo_file_size %>
+</p>
+
+<p>
+  <b>Photo content type:</b>
+  <%=h @article.photo_content_type %>
+</p>
+
+<p>
+  <b>Photo updated at:</b>
+  <%=h @article.photo_updated_at %>
+</p>
+
+
+<%= link_to 'Edit', edit_article_path(@article) %> |
+<%= link_to 'Back', articles_path %>

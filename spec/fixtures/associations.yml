@@ -1,0 +1,31 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  nom: MyString
+  adresse: MyString
+  cp: MyString
+  ville: MyString
+  tel: MyString
+  fax: MyString
+  email: MyString
+  about_us: MyText
+  date_creation: 2009-06-19
+  banniere_file_name: MyString
+  banniere_file_size: 1
+  banniere_content_type: MyString
+  banniere_updated_at: 2009-06-19 11:58:43
+
+two:
+  nom: MyString
+  adresse: MyString
+  cp: MyString
+  ville: MyString
+  tel: MyString
+  fax: MyString
+  email: MyString
+  about_us: MyText
+  date_creation: 2009-06-19
+  banniere_file_name: MyString
+  banniere_file_size: 1
+  banniere_content_type: MyString
+  banniere_updated_at: 2009-06-19 11:58:43

@@ -1,4 +1,16 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :associations
+
+  map.resources :comments
+
+  map.resources :evenements
+
+  map.resources :faqs
+
+  map.resources :galleries
+
+  map.resources :articles
+
   map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil
 
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'

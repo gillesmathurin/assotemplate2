@@ -1,0 +1,59 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  user_id: 1
+  titre: MyString
+  description: MyText
+  photo1_file_name: MyString
+  photo1_file_content_type: MyString
+  photo1_file_size: 1
+  photo1_updated_at: 
+  photo2_file_name: MyString
+  photo2_content_type: MyString
+  photo2_file_size: 1
+  photo2_updated_at: 2009-06-19 11:57:35
+  photo3_file_name: MyString
+  photo3_content_type: MyString
+  photo3_file_size: 1
+  photo3_updated_at: 2009-06-19 11:57:35
+  photo4_file_name: MyString
+  photo4_content_type: MyString
+  photo4_file_size: 1
+  photo4_updated_at: 2009-06-19 11:57:35
+  photo5_file_name: MyString
+  photo5_content_type: MyString
+  photo5_file_size: 1
+  photo5_updated_at: 2009-06-19 11:57:35
+  photo6_file_name: MyString
+  photo6_content_type: MyString
+  photo6_file_size: 1
+  photo6_updated_at: 2009-06-19 11:57:35
+
+two:
+  user_id: 1
+  titre: MyString
+  description: MyText
+  photo1_file_name: MyString
+  photo1_file_content_type: MyString
+  photo1_file_size: 1
+  photo1_updated_at: 
+  photo2_file_name: MyString
+  photo2_content_type: MyString
+  photo2_file_size: 1
+  photo2_updated_at: 2009-06-19 11:57:35
+  photo3_file_name: MyString
+  photo3_content_type: MyString
+  photo3_file_size: 1
+  photo3_updated_at: 2009-06-19 11:57:35
+  photo4_file_name: MyString
+  photo4_content_type: MyString
+  photo4_file_size: 1
+  photo4_updated_at: 2009-06-19 11:57:35
+  photo5_file_name: MyString
+  photo5_content_type: MyString
+  photo5_file_size: 1
+  photo5_updated_at: 2009-06-19 11:57:35
+  photo6_file_name: MyString
+  photo6_content_type: MyString
+  photo6_file_size: 1
+  photo6_updated_at: 2009-06-19 11:57:35

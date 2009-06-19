@@ -1,0 +1,36 @@
+<h1>Listing evenements</h1>
+
+<table>
+  <tr>
+    <th>Date</th>
+    <th>H debut</th>
+    <th>H fin</th>
+    <th>Lieu</th>
+    <th>Description</th>
+    <th>Picture file name</th>
+    <th>Picture content type</th>
+    <th>Picture file size</th>
+    <th>Picture updated at</th>
+  </tr>
+
+<% @evenements.each do |evenement| %>
+  <tr>
+    <td><%=h evenement.date %></td>
+    <td><%=h evenement.h_debut %></td>
+    <td><%=h evenement.h_fin %></td>
+    <td><%=h evenement.lieu %></td>
+    <td><%=h evenement.description %></td>
+    <td><%=h evenement.picture_file_name %></td>
+    <td><%=h evenement.picture_content_type %></td>
+    <td><%=h evenement.picture_file_size %></td>
+    <td><%=h evenement.picture_updated_at %></td>
+    <td><%= link_to 'Show', evenement %></td>
+    <td><%= link_to 'Edit', edit_evenement_path(evenement) %></td>
+    <td><%= link_to 'Destroy', evenement, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New evenement', new_evenement_path %>

@@ -1,0 +1,68 @@
+<p>
+  <b>Nom:</b>
+  <%=h @association.nom %>
+</p>
+
+<p>
+  <b>Adresse:</b>
+  <%=h @association.adresse %>
+</p>
+
+<p>
+  <b>Cp:</b>
+  <%=h @association.cp %>
+</p>
+
+<p>
+  <b>Ville:</b>
+  <%=h @association.ville %>
+</p>
+
+<p>
+  <b>Tel:</b>
+  <%=h @association.tel %>
+</p>
+
+<p>
+  <b>Fax:</b>
+  <%=h @association.fax %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%=h @association.email %>
+</p>
+
+<p>
+  <b>About us:</b>
+  <%=h @association.about_us %>
+</p>
+
+<p>
+  <b>Date creation:</b>
+  <%=h @association.date_creation %>
+</p>
+
+<p>
+  <b>Banniere file name:</b>
+  <%=h @association.banniere_file_name %>
+</p>
+
+<p>
+  <b>Banniere file size:</b>
+  <%=h @association.banniere_file_size %>
+</p>
+
+<p>
+  <b>Banniere content type:</b>
+  <%=h @association.banniere_content_type %>
+</p>
+
+<p>
+  <b>Banniere updated at:</b>
+  <%=h @association.banniere_updated_at %>
+</p>
+
+
+<%= link_to 'Edit', edit_association_path(@association) %> |
+<%= link_to 'Back', associations_path %>

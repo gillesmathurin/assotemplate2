@@ -1,0 +1,48 @@
+<p>
+  <b>Date:</b>
+  <%=h @evenement.date %>
+</p>
+
+<p>
+  <b>H debut:</b>
+  <%=h @evenement.h_debut %>
+</p>
+
+<p>
+  <b>H fin:</b>
+  <%=h @evenement.h_fin %>
+</p>
+
+<p>
+  <b>Lieu:</b>
+  <%=h @evenement.lieu %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @evenement.description %>
+</p>
+
+<p>
+  <b>Picture file name:</b>
+  <%=h @evenement.picture_file_name %>
+</p>
+
+<p>
+  <b>Picture content type:</b>
+  <%=h @evenement.picture_content_type %>
+</p>
+
+<p>
+  <b>Picture file size:</b>
+  <%=h @evenement.picture_file_size %>
+</p>
+
+<p>
+  <b>Picture updated at:</b>
+  <%=h @evenement.picture_updated_at %>
+</p>
+
+
+<%= link_to 'Edit', edit_evenement_path(@evenement) %> |
+<%= link_to 'Back', evenements_path %>
