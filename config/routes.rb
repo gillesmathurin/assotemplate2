@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :associations
+  map.resources :associations, :has_many => :faqs
 
   map.resources :comments
 
@@ -9,15 +9,12 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :galleries
 
-  map.resources :articles
+  map.resources :articles, :has_many => :comments
+  map.articles_du_jour '/articles_du_jour/:day', :controller => 'articles', :action => 'articles_du_jour', :day => nil
+  map.articles_du_mois '/articles_du_mois/:day', :controller => 'articles', :action => 'articles_du_mois', :day => nil
+  
 
   map.activate '/activate/:activation_code', :controller => 'users', :action => 'activate', :activation_code => nil
-
-  map.logout '/logout', :controller => 'sessions', :action => 'destroy'
-
-  map.login  '/login',  :controller => 'sessions', :action => 'new'
-
-  map.signup  '/signup', :controller => 'users',   :action => 'new'
 
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.login '/login', :controller => 'sessions', :action => 'new'
@@ -25,9 +22,12 @@ ActionController::Routing::Routes.draw do |map|
   map.signup '/signup', :controller => 'users', :action => 'new'
   map.resources :users, :member => { :suspend   => :put,
                                      :unsuspend => :put,
-                                     :purge     => :delete } 
+                                     :purge     => :delete },
+                         :has_many => [ :articles, :galleries ] 
 
   map.resource :session
+  
+  map.root :controller => 'associations', :action => 'index'
 
   # The priority is based upon order of creation: first created -> highest priority.
 
