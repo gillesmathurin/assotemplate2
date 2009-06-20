@@ -11,17 +11,23 @@
                 </p>
                 <table>
                     <tr>
-                        <td><%= image_tag(gallery.photo1.url(:thumb), {:rel => "lightbox"}) %></td>
-                        <td><%= image_tag(gallery.photo2.url(:thumb)) %></td>
-                        <td><%= image_tag(gallery.photo3.url(:thumb)) %></td>
-                        <td><%= image_tag(gallery.photo4.url(:thumb)) %></td>
-                        <td><%= image_tag(gallery.photo5.url(:thumb)) %></td>
-                        <td><%= image_tag(gallery.photo6.url(:thumb)) %></td>
+                        <td><%= link_to image_tag(gallery.photo1.url(:thumb)),gallery.photo1.url(:medium),
+                         {:rel => "lightbox[#{gallery.titre}]"} unless gallery.photo1.url.blank? %></td>
+                        <td><%= link_to image_tag(gallery.photo2.url(:thumb)),gallery.photo2.url(:medium),
+                         {:rel => "lightbox[#{gallery.titre}]"} unless gallery.photo2.url.blank? %></td>
+                        <td><%= link_to image_tag(gallery.photo3.url(:thumb)),gallery.photo3.url(:medium),
+                          {:rel => "lightbox[#{gallery.titre}]"} unless gallery.photo3.url.blank? %></td>
+                        <td><%= link_to image_tag(gallery.photo4.url(:thumb)),gallery.photo4.url(:medium),
+                          {:rel => "lightbox[#{gallery.titre}]"} unless gallery.photo4.url.blank? %></td>
+                        <td><%= link_to image_tag(gallery.photo5.url(:thumb)),gallery.photo5.url(:medium),
+                          {:rel => "lightbox[#{gallery.titre}]"} unless gallery.photo5.url.blank? %></td>
+                        <td><%= link_to image_tag(gallery.photo6.url(:thumb)),gallery.photo6.url(:medium),
+                            {:rel => "lightbox[#{gallery.titre}]"} unless gallery.photo6.url.blank? %></td>
                     </tr>
                     <% if logged_in? && (current_user.login == @membre.login) %>
                     <tr>
                         <td>
-                            <%= link_to "Supprimer", gallery_path(@gallery), :method => :delete, :confirm => "En êtes vous sur ?" %>
+                            <%= link_to "Supprimer", gallery_path(gallery), :method => :delete, :confirm => "En êtes vous sur ?" %>
                         </td>
                     </tr>
                     <% end %>
