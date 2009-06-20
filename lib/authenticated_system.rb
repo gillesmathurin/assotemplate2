@@ -34,6 +34,14 @@ module AuthenticatedSystem
     def authorized?(action = action_name, resource = nil)
       logged_in?
     end
+    
+    def admin?
+      logged_in? && (current_user.usertype == "0" || current_user.usertype == "1")
+    end
+    
+    def member?
+      logged_in? && (current_user.usertype == "0" || current_user.usertype == "1" || current_user.usertype == "2")
+    end
 
     # Filter method to enforce a login requirement.
     #
@@ -51,6 +59,14 @@ module AuthenticatedSystem
     #
     def login_required
       authorized? || access_denied
+    end
+    
+    def admin_login_required
+      admin? || access_denied
+    end
+    
+    def member_login_required
+      member? || access_denied
     end
 
     # Redirect as appropriate when an access request fails.
@@ -96,7 +112,7 @@ module AuthenticatedSystem
     # Inclusion hook to make #current_user and #logged_in?
     # available as ActionView helper methods.
     def self.included(base)
-      base.send :helper_method, :current_user, :logged_in?, :authorized? if base.respond_to? :helper_method
+      base.send :helper_method, :current_user, :logged_in?, :authorized?, :admin?, :member? if base.respond_to? :helper_method
     end
 
     #
