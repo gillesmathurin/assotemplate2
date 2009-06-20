@@ -1,18 +1,37 @@
-<p>
-  <b>Question:</b>
-  <%=h @faq.question %>
-</p>
+<div id="yui-main">
+    
+    <div class="yui-b">
+        
+        <div class="yui-g">
+            <p>
+              <b>Question:</b>
+              <%=h @faq.question %>
+            </p>
 
-<p>
-  <b>Reponse:</b>
-  <%=h @faq.reponse %>
-</p>
+            <p>
+              <b>Reponse:</b>
+              <%=h @faq.reponse %>
+            </p>
 
-<p>
-  <b>Association:</b>
-  <%=h @faq.association_id %>
-</p>
+            <p>
+              <b>Association:</b>
+              <%=h @faq.association_id %>
+            </p>
+        </div>
+        
+        <div class="yui-g">
+            <%= link_to 'Edit', edit_faq_path(@faq) %> |
+            <%= link_to 'Back', faqs_path %>
+        </div>
+        
+    </div>
+    
+</div>
+
+<div class="yui-b sidebar">
+    
+</div>
 
 
-<%= link_to 'Edit', edit_faq_path(@faq) %> |
-<%= link_to 'Back', faqs_path %>
+
+

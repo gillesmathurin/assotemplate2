@@ -1,14 +1,28 @@
-<h1>Modifier Faq</h1>
+<div id="yui-main">
+    <div class="yui-b">
+        <h1>Modifier Faq</h1>
+        
+        <div class="yui-g">
+            <% form_for(@faq) do |f| %>
+              <%= f.error_messages %>
 
-<% form_for(@faq) do |f| %>
-  <%= f.error_messages %>
+              <%= render :partial => 'form', :locals => {:f => f} %>
 
-  <%= render :partial => 'form', :locals => {:f => f} %>
-  
-  <p>
-    <%= f.submit 'Mettre à jour' %>
-  </p>
-<% end %>
+              <p>
+                <%= f.submit 'Mettre à jour' %>
+              </p>
+            <% end %>
+        </div>
 
-<%= link_to 'Voir', @faq %> |
-<%= link_to 'Retour', faqs_path %>
+        <div class="yui-g">
+            <%= link_to 'Voir', @faq %> |
+            <%= link_to 'Retour', faqs_path %>
+        </div>
+
+    </div>
+</div>
+
+<div class="yui-b sidebar">
+    
+</div>
+

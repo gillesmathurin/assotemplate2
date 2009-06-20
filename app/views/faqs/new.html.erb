@@ -1,13 +1,24 @@
-<h1>Nouveau faq</h1>
+<div id="yui-main">
+    <div class="yui-b">
+        <div class="yui-g">
+            <h1>Nouveau faq</h1>
 
-<% form_for(@faq) do |f| %>
-  <%= f.error_messages %>
+            <% form_for(@faq) do |f| %>
+              <%= f.error_messages %>
 
-  <%= render :partial => 'form', :locals => {:f => f} %>
+              <%= render :partial => 'form', :locals => {:f => f} %>
 
-  <p>
-    <%= f.submit 'Enregistrer' %>
-  </p>
-<% end %>
+              <p>
+                <%= f.submit 'Enregistrer' %>
+              </p>
+            <% end %>
 
-<%= link_to 'Retour', faqs_path %>
+            <%= link_to 'Retour', faqs_path %>
+        </div>
+    </div>
+</div>
+
+<div class="yui-b sidebar">
+    
+</div>
+
