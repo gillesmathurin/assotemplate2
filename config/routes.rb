@@ -4,7 +4,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :comments
 
   map.resources :evenements
-
+  map.evenenemts_du_jour '/evenements_du_jour/:day', :controller => 'evenements', :action => 'evenenemts_du_jour', :day => nil
+  map.evenements_du_mois '/evenements_du_mois/:day', :controller => 'evenements', :action => 'evenements_du_mois', :day => nil
+  
   map.resources :faqs
 
   map.resources :galleries

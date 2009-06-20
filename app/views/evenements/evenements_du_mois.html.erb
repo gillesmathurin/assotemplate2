@@ -1,0 +1,46 @@
+<div id="yui-main">
+    <div class="yui-b">
+        
+        <div class="yui-g">
+            <h1 class="accroche">Evenement du Mois</h1>
+        </div>
+                
+        <div class="yui-gc">
+            <div class="yui-u first">
+                 <% if !@evenements.blank? %>
+                      <% for event in @evenements %>
+                        <p>
+                            <b><%= event.titre %></b> - <pre>date : <%= I18n.l event.date %>, lieu : <%= event.lieu %>, de : <%= event.hdebut.strftime("%H:%M") if event.hdebut %> à : <%= event.hfin.strftime("%H:%M") if event.hfin %></pre>
+                        </p>
+                        <p>
+                            <%= truncate(event.description, :length => 80) %><br/>
+                            <%= link_to "voir plus …", evenement_path(event) %>
+                        </p>
+                        
+                        <% if admin? %>
+                            <p>
+                                <%= link_to "Modifier", edit_evenement_path(event), :class => "button_link2" %> | <%= link_to "Supprimer", evenement_path(event), :method => :delete, :class => "button_link2" %>
+                            </p>
+                         <% end %>
+                      <% end %>
+                 <% else %>
+                     <p>Pas d'événements programmés pour ce mois</p>
+                 <% end %>
+                 
+            </div>
+
+            <div class="yui-u">
+                <h3 class="green">Calendrier</h3>
+                <% @date = Date.today %>
+
+                <%= calendar_for(@date.year, @date.month, :next_and_previous_month => [ "%b", lambda { |@date| evenements_du_mois_path(@date) }], &calendar_events_proc) %>
+            </div>
+        </div>       
+    </div>
+</div>
+
+<div class="yui-b sidebar">
+    <%= render :partial => "shared/identification" %>
+</div>
+
+
