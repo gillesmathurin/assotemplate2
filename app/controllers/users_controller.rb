@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     
     respond_to do |format|
       format.html {  }
-      format.xml { render :xml => @membres }
+      format.xml { render :xml => @membres   }
     end
   end
 
