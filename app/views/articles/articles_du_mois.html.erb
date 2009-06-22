@@ -1,0 +1,39 @@
+<div id="yui-main">
+    <div class="yui-b">
+        <div class="yui-g">
+            <h1>ARTICLES DU MOIS</h1>
+
+            <% @articles.each do |article| %>
+            <div class="liste-article">
+                <p class="info-auteur">
+                    <%= image_tag(article.auteur.avatar.url(:thumb)) %><br/>
+                    Auteur : <%= article.auteur.name %><br/>
+                    publié le : <%= I18n.l article.created_at %>
+                </p>
+                <p class="resume-article">
+                    <%= truncate(article.body, :length => 160) %>
+                </p>
+                <p>
+                    <%= link_to "Lire", article_path(article) %>
+                </p>
+            </div>
+            <% end %>
+
+            
+        </div>
+    </div>
+</div>
+
+<div class="yui-b sidebar">
+    <%= render :partial => "shared/identification" %>
+    <p><%= link_to 'Rédiger un article', new_article_path %></p>
+    
+    <div class="yui-g">
+        <h3 class="red">Archives</h3>
+        <% @date = Date.today %>
+
+        <%= calendar_for(@date.year, @date.month, :next_and_previous_month => [ "%b", lambda { |@date| articles_du_mois_path(@date) }], &articles_proc) %>
+    </div>
+    
+</div>
+

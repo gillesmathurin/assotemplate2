@@ -13,6 +13,7 @@ Rails::Initializer.run do |config|
   config.gem 'cucumber', :lib => false, :version => '>=0.3.0'
   config.gem 'rspec-rails', :lib => false, :version => '>=1.2.4'
   config.gem 'rspec', :lib => false, :version => '>=1.2.4'
+  config.gem 'faker', :lib => false, :version => '>=0.3.1'
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
   # -- all .rb files in that directory are automatically loaded.

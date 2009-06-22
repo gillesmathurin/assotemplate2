@@ -1,13 +1,27 @@
-<p>
-  <b>Auteur:</b>
-  <%=h @comment.auteur %>
-</p>
+<div id="yui-main">
+    <div class="yui-b">
+        <div class="yui-g">
+            <p>
+              <b>Auteur:</b>
+              <%=h @comment.auteur %>
+            </p>
 
-<p>
-  <b>Body:</b>
-  <%=h @comment.body %>
-</p>
+            <p>
+              <b>Body:</b>
+              <%=h @comment.body %>
+            </p>
+        </div>
+        
+        <div class="yui-g">
+            <%= link_to 'Modifier', edit_comment_path(@comment) %> |
+            <%= link_to 'Retour', comments_path %>
+        </div>
+    </div>
+</div>
+
+<div class="yui-b sidebar">
+    <%= render :partial => "shared/identification" %>
+</div>
 
 
-<%= link_to 'Modifier', edit_comment_path(@comment) %> |
-<%= link_to 'Retour', comments_path %>
+

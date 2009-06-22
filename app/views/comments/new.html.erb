@@ -1,13 +1,24 @@
-<h1>Nouveau commentaire</h1>
+<div id="yui-main">
+    <div class="yui-b">
+        <div class="yui-g">
+            <h1>Nouveau commentaire</h1>
 
-<% form_for(@comment) do |f| %>
-  <%= f.error_messages %>
+            <% form_for(@comment) do |f| %>
+              <%= f.error_messages %>
 
-  <%= render :partial => 'form', :locals => {:f => f} %>
-  
-  <p>
-    <%= f.submit 'Enregistrer' %>
-  </p>
-<% end %>
+              <%= render :partial => 'form', :locals => {:f => f} %>
 
-<%= link_to 'Retour', comments_path %>
+              <p>
+                <%= f.submit 'Enregistrer' %>
+              </p>
+            <% end %>
+
+            <%= link_to 'Retour', comments_path %>
+        </div>
+    </div>
+</div>
+
+<div class="yui-b sidebar">
+    <%= render :partial => "shared/identification" %>
+</div>
+
