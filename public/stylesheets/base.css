@@ -1,0 +1,83 @@
+p {
+	margin-bottom: 0.8em;
+}
+
+h1 {
+	margin-bottom: 1.4em;
+	font-weight: bold;
+	color: #1b4dff;
+	font-size: 1.3em;
+}
+
+/* @group Header */
+
+div#hd {
+	height: 120px;
+	background-color: transparent;
+}
+
+#hd #logo {
+	display: block;
+}
+
+#hd #titre {
+	position: relative;
+	font-weight: bold;
+	font-size: 2em;
+}
+
+#hd #menu {
+	width: 972px;
+	background-color: #6b61ec;
+	position: relative;
+	display: block;
+	text-align: center;
+	border: 1px solid yellow;
+	line-height: 1.7;
+}
+
+#hd #menu ul li {
+	display: inline-block;
+	text-align: center;
+	margin-right: 10px;
+	border-right: 1px solid silver;
+	padding-right: 10px;
+	font-weight: bold;
+	font-size: 1.2em;
+	border-color: white;
+}
+
+#hd #menu ul li.last {
+	border-style: none;
+}
+
+#hd #menu ul li a:hover {
+	color: yellow;
+}
+
+#hd #menu ul li a {
+	text-decoration: none;
+	color: #a4001f;
+}
+
+
+
+/* @end */
+
+/* @group Body */
+
+/* @group Flash-Errors */
+
+
+
+/* @end */
+
+
+
+/* @end */
+
+/* @group Footer */
+
+
+
+/* @end */

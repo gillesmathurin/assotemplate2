@@ -6,7 +6,7 @@
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title><%= @association.nom %> <%= controller.controller_name %> <%= controller.action_name %></title>
   <%= javascript_include_tag :all, :cache => true %>
-  <%= stylesheet_link_tag 'reset-fonts-grids', 'base', 'lightbox', :cache => false %>
+  <%= stylesheet_link_tag 'reset-fonts-grids', 'base', 'lightbox', :cache => true %>
   
   <%= include_tiny_mce_if_needed %>
 </head>
@@ -18,6 +18,9 @@
         <div id="logo">
             <%= image_tag(@association.banniere.url) %>
         </div>
+        <div id="titre">
+            <%= @association.nom %>
+        </div>
         <div id="menu">
             <ul>
                 <li><%= link_to "ACCUEIL", associations_path() %></li>
@@ -26,7 +29,7 @@
                 <li><%= link_to "MEMBRES", users_path() %></li>
                 <li><%= link_to "CONTACTS", contact_path() %></li>
                 <li><%= link_to "FAQS", faqs_path() %> </li>
-                <li><%= link_to "ANNUAIRE DES ASSOCIATIONS", "http://www.asso-guadeloupe.fr" %></li>
+                <li class="last"><%= link_to "ANNUAIRE DES ASSOCIATIONS", "http://www.asso-guadeloupe.fr" %></li>
             </ul>
         </div>
     </div>

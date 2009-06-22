@@ -5,8 +5,7 @@
             <h1 class="accroche">Evenement du Mois</h1>
         </div>
                 
-        <div class="yui-gc">
-            <div class="yui-u first">
+        <div class="yui-g">
                  <% if !@evenements.blank? %>
                       <% for event in @evenements %>
                         <p>
@@ -27,20 +26,19 @@
                      <p>Pas d'événements programmés pour ce mois</p>
                  <% end %>
                  
-            </div>
 
-            <div class="yui-u">
-                <h3 class="green">Calendrier</h3>
-                <% @date = Date.today %>
-
-                <%= calendar_for(@date.year, @date.month, :next_and_previous_month => [ "%b", lambda { |@date| evenements_du_mois_path(@date) }], &calendar_events_proc) %>
-            </div>
+ 
         </div>       
     </div>
 </div>
 
 <div class="yui-b sidebar">
     <%= render :partial => "shared/identification" %>
+    
+    <h3 class="green">Calendrier</h3>
+     <% @date = Date.today %>
+
+     <%= calendar_for(@date.year, @date.month, :next_and_previous_month => [ "%b", lambda { |@date| evenements_du_mois_path(@date) }], &calendar_events_proc) %>
 </div>
 
 
