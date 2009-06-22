@@ -1,0 +1,30 @@
+<div id="yui-main">
+    <div class="yui-b">
+        <div class="yui-g">
+            <h1>Nos Membres</h1>
+            
+            <% if !@membres.blank? %>
+              <% for membre in @membres %>
+                <div class="membre">
+                    <p>
+                        <%= membre.avatar.url(:thumb) if membre.avatar? %>
+                    </p>
+                    <p>
+                        <%=h membre.login %>
+                    </p>
+                    <p>
+                        <%=h membre.profil %>
+                    </p>
+                </div>
+              <% end %>
+            <% else %>
+              
+            <% end %>
+            
+        </div>
+    </div>
+</div>
+
+<div class="yui-b sidebar">
+    
+</div>

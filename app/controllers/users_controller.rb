@@ -6,6 +6,14 @@ class UsersController < ApplicationController
   # before_filter :admin_required, :only => [:suspend, :unsuspend, :destroy, :purge]
   before_filter :find_user, :only => [:suspend, :unsuspend, :destroy, :purge]
   
+  def index
+    @membres = User.membres
+    
+    respond_to do |format|
+      format.html {  }
+      format.xml { render :xml => @membres }
+    end
+  end
 
   # render new.rhtml
   def new

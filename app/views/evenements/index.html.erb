@@ -10,7 +10,7 @@
                  <% if !@evenements.blank? %>
                       <% for event in @evenements %>
                         <p>
-                            <b><%= event.titre %></b> - <pre>date : <%= I18n.l event.date %>, lieu : <%= event.lieu %>, de : <%= event.hdebut.strftime("%H:%M") if event.hdebut %> à : <%= event.hfin.strftime("%H:%M") if event.hfin %></pre>
+                            <b><%= event.titre %></b> - <pre>date : <%= I18n.l event.date %>, lieu : <%= event.lieu %>, de : <%= event.h_debut.strftime("%H:%M") if event.h_debut %> à : <%= event.h_fin.strftime("%H:%M") if event.h_fin %></pre>
                         </p>
                         <p>
                             <%= truncate(event.description, :length => 160) %><br/>

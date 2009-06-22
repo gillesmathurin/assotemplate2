@@ -6,8 +6,8 @@
             <% @articles.each do |article| %>
             <div class="liste-article">
                 <p class="info-auteur">
-                    <%= image_tag(article.auteur.avatar.url(:thumb)) %><br/>
-                    Auteur : <%= article.auteur.name %><br/>
+                    <%= image_tag(article.user.avatar.url(:thumb)) %><br/>
+                    Auteur : <%= article.user.name %><br/>
                     publié le : <%= I18n.l article.created_at %>
                 </p>
                 <p class="resume-article">

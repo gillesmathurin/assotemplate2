@@ -33,8 +33,8 @@ class User < ActiveRecord::Base
   has_attached_file :avatar, :styles => { :thumb => "100x100>", :medium => "300x300>" }
   
   # fetch the member and admin category users
-  named_scope :membres, :conditions => ['categorie = ?', 2]
-  named_scope :admins, :conditions => ['categorie = ?', 1]
+  named_scope :membres, :conditions => ['usertype = ?', 2]
+  named_scope :admins, :conditions => ['usertype = ?', 1]
     
   def categorie_to_s
     case categorie
