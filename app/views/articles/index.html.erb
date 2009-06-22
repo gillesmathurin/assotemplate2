@@ -5,17 +5,23 @@
 
             <% @articles.each do |article| %>
             <div class="liste-article">
+                <p class="img-auteur">
+                    <%= image_tag(article.user.avatar.url(:thumb)) %>
+                </p>
                 <p class="info-auteur">
-                    <%= image_tag(article.user.avatar.url(:thumb)) %><br/>
-                    Auteur : <%= article.user.name %><br/>
+                    <span>Auteur : <%= article.user.name %></span><br/>
                     publié le : <%= I18n.l article.created_at %>
                 </p>
                 <p class="resume-article">
                     <%= truncate(article.body, :length => 160) %>
                 </p>
                 <p>
-                    <%= link_to "Lire", article_path(article) %>
+                    <%= link_to "Lire", article_path(article) %><br/>
                 </p>
+                <p>
+                    <%= article.comments.size %> commentaires
+                </p>
+                
             </div>
             <% end %>
 

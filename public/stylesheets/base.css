@@ -1,5 +1,10 @@
+body {
+	font-family: "Lucida Grande", Lucida, Verdana, sans-serif;
+}
+
 p {
 	margin-bottom: 0.8em;
+	line-height: 1.3em;
 }
 
 h1 {
@@ -65,6 +70,19 @@ div#hd {
 /* @end */
 
 /* @group Body */
+
+p.info-auteur {
+}
+
+p.info-auteur span {
+	color: orange;
+	font-weight: bold;
+}
+
+p.img-auteur {
+	float: left;
+	margin-right: 1.2em;
+}
 
 /* @group Flash-Errors */
 
