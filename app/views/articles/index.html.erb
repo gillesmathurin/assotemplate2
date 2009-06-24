@@ -10,7 +10,8 @@
                 </p>
                 <p class="info-auteur">
                     <span>Auteur : <%= article.user.name %></span><br/>
-                    publié le : <%= I18n.l article.created_at %>
+                    <pre>publié le : <%= I18n.l article.created_at %>
+</pre>
                 </p>
                 <p class="resume-article">
                     <%= truncate(article.body, :length => 160) %>
@@ -32,9 +33,9 @@
 
 <div class="yui-b sidebar">
     <%= render :partial => "shared/identification" %>
-    <p><%= link_to 'Rédiger un article', new_article_path %></p>
+    <p><%= link_to 'Rédiger un article', new_article_path  if logged_in? %></p>
     
-    <div class="yui-g">
+    <div class="yui-g calendar">
         <h3 class="red">Archives</h3>
         <% @date = Date.today %>
 

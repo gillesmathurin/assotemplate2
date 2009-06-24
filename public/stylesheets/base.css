@@ -84,6 +84,31 @@ p.img-auteur {
 	margin-right: 1.2em;
 }
 
+div.bloc {
+	display: block;
+	padding: 10px;
+	margin-bottom: 15px;
+	text-align: center;
+	border: 1px solid silver;
+}
+
+div.calendar {
+	border: 1px solid silver;
+	padding: 10px;
+}
+
+div.calendar h3 {
+	text-align: center;
+	font-weight: bold;
+	color: maroon;
+	margin-bottom: 12px;
+}
+
+table.calendar {
+	display: block;
+	padding-left: 70px;
+}
+
 /* @group Flash-Errors */
 
 
