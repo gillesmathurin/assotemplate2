@@ -1,9 +1,15 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe AssociationsController do
-
+  include AuthenticatedTestHelper
+  fixtures :users
+  
   def mock_association(stubs={})
     @mock_association ||= mock_model(Association, stubs)
+  end
+  
+  before(:all) do
+    Association.should_receive(:first).and_return(@mock_association)
   end
   
   describe "GET index" do
@@ -11,6 +17,7 @@ describe AssociationsController do
     before(:each) do
       @article = mock_model(Article)
       @evenement = mock_model(Evenement)
+      @mock_galleries = mock_model(Gallery)
     end
     
     it "assigns the first association as @association" do
@@ -30,17 +37,28 @@ describe AssociationsController do
       get :index
       assigns[:evenements].should == [@evenement]
     end
+    
+    it "assigns the last four created galleries as @galleries" do
+      Gallery.should_receive(:last_four).and_return([@mock_galleries])
+      get :index
+      assigns[:galleries].should == [@mock_galleries]
+    end
   end
 
   describe "GET show" do
     it "assigns the requested association as @association" do
-      Association.should_receive(:find).with("37").and_return(mock_association)
+      Association.stub!(:find).with("37").and_return(mock_association)
       get :show, :id => "37"
       assigns[:association].should equal(mock_association)
     end
   end
 
   describe "GET new" do
+    
+    before(:each) do
+      login_as('quentin')
+    end
+    
     it "assigns a new association as @association" do
       Association.should_receive(:new).and_return(mock_association)
       get :new
@@ -49,6 +67,11 @@ describe AssociationsController do
   end
 
   describe "GET edit" do
+    
+    before(:each) do
+      login_as('quentin')
+    end
+    
     it "assigns the requested association as @association" do
       Association.stub!(:find).with("37").and_return(mock_association)
       get :edit, :id => "37"
@@ -133,6 +156,11 @@ describe AssociationsController do
   end
 
   describe "DELETE destroy" do
+    
+    before(:each) do
+      login_as('quentin')
+    end
+    
     it "destroys the requested association" do
       Association.should_receive(:find).with("37").and_return(mock_association)
       mock_association.should_receive(:destroy)
