@@ -1,6 +1,8 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe EvenementsController do
+  include AuthenticatedTestHelper
+  fixtures :users
 
   def mock_evenement(stubs={})
     @mock_evenement ||= mock_model(Evenement, stubs)
@@ -23,6 +25,11 @@ describe EvenementsController do
   end
 
   describe "GET new" do
+    
+    before(:each) do
+      login_as('quentin')
+    end
+    
     it "assigns a new evenement as @evenement" do
       Evenement.stub!(:new).and_return(mock_evenement)
       get :new
@@ -31,6 +38,11 @@ describe EvenementsController do
   end
 
   describe "GET edit" do
+    
+    before(:each) do
+      login_as('quentin')
+    end
+    
     it "assigns the requested evenement as @evenement" do
       Evenement.stub!(:find).with("37").and_return(mock_evenement)
       get :edit, :id => "37"
@@ -115,6 +127,10 @@ describe EvenementsController do
   end
 
   describe "DELETE destroy" do
+    before(:each) do
+      login_as('quentin')
+    end
+    
     it "destroys the requested evenement" do
       Evenement.should_receive(:find).with("37").and_return(mock_evenement)
       mock_evenement.should_receive(:destroy)

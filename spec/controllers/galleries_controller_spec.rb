@@ -1,9 +1,19 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe GalleriesController do
+  include AuthenticatedTestHelper
+  fixtures :users
 
   def mock_gallery(stubs={})
     @mock_gallery ||= mock_model(Gallery, stubs)
+  end
+  
+  def mock_membre(stubs={})
+    @mock_membre ||= mock_model(Membre, stubs)
+  end
+  
+  before(:all) do
+    Membre.should_receive(:find).with("2").and_return(mock_membre)
   end
   
   describe "GET index" do

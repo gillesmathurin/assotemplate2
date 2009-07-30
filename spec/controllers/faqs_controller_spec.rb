@@ -1,6 +1,8 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe FaqsController do
+  include AuthenticatedTestHelper
+  fixtures :users
 
   def mock_faq(stubs={})
     @mock_faq ||= mock_model(Faq, stubs)
@@ -23,6 +25,10 @@ describe FaqsController do
   end
 
   describe "GET new" do
+    before(:each) do
+      login_as('quentin')
+    end
+    
     it "assigns a new faq as @faq" do
       Faq.stub!(:new).and_return(mock_faq)
       get :new
@@ -31,6 +37,10 @@ describe FaqsController do
   end
 
   describe "GET edit" do
+    before(:each) do
+      login_as('quentin')
+    end
+    
     it "assigns the requested faq as @faq" do
       Faq.stub!(:find).with("37").and_return(mock_faq)
       get :edit, :id => "37"
@@ -115,6 +125,10 @@ describe FaqsController do
   end
 
   describe "DELETE destroy" do
+    before(:each) do
+      login_as('quentin')
+    end
+    
     it "destroys the requested faq" do
       Faq.should_receive(:find).with("37").and_return(mock_faq)
       mock_faq.should_receive(:destroy)

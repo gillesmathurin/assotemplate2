@@ -81,14 +81,14 @@ describe CommentsController do
       it "assigns a newly created but unsaved comment as @comment" do
         @mock_article.should_receive(:comments).and_return(@prox_comments)
         @prox_comments.should_receive(:build).with({}).and_return(mock_comment(:save => false))
-        post :create, :comment => {:these => 'params'}
+        post :create, :comment => {:these => 'params'}, :article_id => "1"
         assigns[:comment].should equal(mock_comment)
       end
 
       it "re-renders the 'new' template" do
         @mock_article.should_receive(:comments).and_return(@prox_comments)
         @prox_comments.should_receive(:build).with({}).and_return(mock_comment(:save => false))
-        post :create, :comment => {}
+        post :create, :comment => {}, :article_id => "1"
         response.should render_template('new')
       end
     end
@@ -99,40 +99,32 @@ describe CommentsController do
     
     describe "with valid params" do
       it "updates the requested comment" do
-        Comment.should_receive(:find).with("37").and_return(mock_comment)
+        @mock_article.should_receive(:comments).and_return(@prox_comments)
+        @prox_comments.should_receive(:find).with("37").and_return(mock_comment)
         mock_comment.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, :id => "37", :comment => {:these => 'params'}
-      end
-
-      it "assigns the requested comment as @comment" do
-        Comment.stub!(:find).and_return(mock_comment(:update_attributes => true))
-        put :update, :id => "1"
-        assigns[:comment].should equal(mock_comment)
+        put :update, :id => "37", :comment => {:these => 'params'}, :article_id => "1"
       end
 
       it "redirects to the comment" do
-        Comment.stub!(:find).and_return(mock_comment(:update_attributes => true))
-        put :update, :id => "1"
+        @mock_article.should_receive(:comments).and_return(@prox_comments)
+        @prox_comments.should_receive(:find).with("37").and_return(mock_comment(:update_attributes => true))
+        put :update, :id => "37", :article_id =>"1"
         response.should redirect_to(comment_url(mock_comment))
       end
     end
     
     describe "with invalid params" do
       it "updates the requested comment" do
-        Comment.should_receive(:find).with("37").and_return(mock_comment)
+        @mock_article.should_receive(:comments).and_return(@prox_comments)
+        @prox_comments.should_receive(:find).with("37").and_return(mock_comment)
         mock_comment.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, :id => "37", :comment => {:these => 'params'}
-      end
-
-      it "assigns the comment as @comment" do
-        Comment.stub!(:find).and_return(mock_comment(:update_attributes => false))
-        put :update, :id => "1"
-        assigns[:comment].should equal(mock_comment)
+        put :update, :id => "37", :comment => {:these => 'params'}, :article_id => "1"
       end
 
       it "re-renders the 'edit' template" do
-        Comment.stub!(:find).and_return(mock_comment(:update_attributes => false))
-        put :update, :id => "1"
+        @mock_article.should_receive(:comments).and_return(@prox_comments)
+        @prox_comments.should_receive(:find).with("37").and_return(mock_comment(:update_attributes => false))
+        put :update, :id => "37", :article_id =>"1"
         response.should render_template('edit')
       end
     end
