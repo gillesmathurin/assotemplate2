@@ -34,8 +34,6 @@
 
 <div class="yui-b sidebar">
     <%= render :partial => "shared/identification" %>
-    
-    <h3 class="green">Calendrier</h3>
      <% @date = Date.today %>
 
      <%= calendar_for(@date.year, @date.month, :next_and_previous_month => [ "%b", lambda { |@date| evenements_du_mois_path(@date) }], &calendar_events_proc) %>
