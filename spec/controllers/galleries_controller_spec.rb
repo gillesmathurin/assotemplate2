@@ -9,71 +9,114 @@ describe GalleriesController do
   end
   
   def mock_membre(stubs={})
-    @mock_membre ||= mock_model(Membre, stubs)
+    @mock_membre ||= mock_model(User, stubs)
   end
   
-  before(:all) do
-    Membre.should_receive(:find).with("2").and_return(mock_membre)
-  end
-  
-  describe "GET index" do
-    it "assigns all galleries as @galleries" do
-      Gallery.stub!(:find).with(:all).and_return([mock_gallery])
-      get :index
+  describe "GET index" do    
+    
+    before(:each) do
+      User.should_receive(:find).with("2").and_return(mock_membre)
+      @prox_galleries = mock('galleries')
+    end
+    
+    it "assigns the last four member's galleries as @galleries" do
+      mock_membre.should_receive(:galleries).and_return(@prox_galleries)
+      @prox_galleries.should_receive(:last_four).and_return([mock_gallery])
+      get :index, :user_id => "2"
       assigns[:galleries].should == [mock_gallery]
     end
   end
 
   describe "GET show" do
-    it "assigns the requested gallery as @gallery" do
-      Gallery.stub!(:find).with("37").and_return(mock_gallery)
-      get :show, :id => "37"
-      assigns[:gallery].should equal(mock_gallery)
+    
+    describe "within a member context" do
+      
+      before(:each) do
+        User.should_receive(:find).with("2").and_return(mock_membre)
+        @prox_galleries = mock('galleries')
+      end
+      
+      it "assgins the requested member gallery as @gallery" do
+        mock_membre.should_receive(:galleries).and_return(mock_gallery)
+        mock_gallery.should_receive(:find).with("37").and_return(mock_gallery)
+        get :show, :user_id => "2", :id => "37"
+        assigns[:gallery].should equal(mock_gallery)
+      end
+    end
+    
+    describe "outside a member context" do
+      it "assigns the requested gallery as @gallery" do
+        Gallery.stub!(:find).with("37").and_return(mock_gallery)
+        get :show, :id => "37"
+        assigns[:gallery].should equal(mock_gallery)
+      end
     end
   end
 
   describe "GET new" do
+    before(:each) do
+      User.should_receive(:find).with("2").and_return(mock_membre)
+      @prox_galleries = mock('galleries')
+    end
+    
     it "assigns a new gallery as @gallery" do
-      Gallery.stub!(:new).and_return(mock_gallery)
-      get :new
+      mock_membre.should_receive(:galleries).and_return(@prox_galleries)
+      @prox_galleries.should_receive(:build).and_return(mock_gallery)
+      get :new, :user_id => "2"
       assigns[:gallery].should equal(mock_gallery)
     end
   end
 
   describe "GET edit" do
+    
+    before(:each) do
+      User.should_receive(:find).with("2").and_return(mock_membre)
+      @prox_galleries = mock('galleries')
+    end
+    
     it "assigns the requested gallery as @gallery" do
-      Gallery.stub!(:find).with("37").and_return(mock_gallery)
-      get :edit, :id => "37"
+      mock_membre.should_receive(:galleries).and_return(@prox_galleries)
+      @prox_galleries.should_receive(:find).with("37").and_return(mock_gallery)
+      get :edit, :id => "37", :user_id => "2"
       assigns[:gallery].should equal(mock_gallery)
     end
   end
 
   describe "POST create" do
     
+    before(:each) do
+      User.should_receive(:find).with("2").and_return(mock_membre)
+      @prox_galleries = mock('galleries')
+    end
+    
     describe "with valid params" do
       it "assigns a newly created gallery as @gallery" do
-        Gallery.stub!(:new).with({'these' => 'params'}).and_return(mock_gallery(:save => true))
-        post :create, :gallery => {:these => 'params'}
+        mock_membre.should_receive(:galleries).and_return(@prox_galleries)
+        @prox_galleries.should_receive(:build).with({'these' => 'params'}).and_return(mock_gallery(:save => true))
+        post :create, :gallery => {:these => 'params'}, :user_id => "2"
         assigns[:gallery].should equal(mock_gallery)
       end
 
       it "redirects to the created gallery" do
-        Gallery.stub!(:new).and_return(mock_gallery(:save => true))
-        post :create, :gallery => {}
-        response.should redirect_to(gallery_url(mock_gallery))
+        mock_membre.should_receive(:galleries).and_return(@prox_galleries)
+        @prox_galleries.should_receive(:build).with({'these' => 'params'}).and_return(mock_gallery(:save => true))
+        post :create, :gallery => {:these => 'params'}, :user_id => "2"
+        response.should redirect_to(user_gallery_url(mock_membre, mock_gallery))
       end
     end
     
     describe "with invalid params" do
       it "assigns a newly created but unsaved gallery as @gallery" do
-        Gallery.stub!(:new).with({'these' => 'params'}).and_return(mock_gallery(:save => false))
-        post :create, :gallery => {:these => 'params'}
+        mock_membre.should_receive(:galleries).and_return(@prox_galleries)
+        @prox_galleries.should_receive(:build).with({'these' => 'params'}).and_return(mock_gallery(:save => false))
+        post :create, :gallery => {:these => 'params'}, :user_id => "2"
         assigns[:gallery].should equal(mock_gallery)
       end
 
       it "re-renders the 'new' template" do
-        Gallery.stub!(:new).and_return(mock_gallery(:save => false))
-        post :create, :gallery => {}
+        mock_membre.should_receive(:galleries).and_return(@prox_galleries)
+        @prox_galleries.should_receive(:build).with({'these' => 'params'}).and_return(mock_gallery(:save => false))
+        post :create, :gallery => {:these => 'params'}, :user_id => "2"
         response.should render_template('new')
       end
     end
@@ -82,42 +125,53 @@ describe GalleriesController do
 
   describe "PUT update" do
     
+    before(:each) do
+      User.should_receive(:find).with("2").and_return(mock_membre)
+      @prox_galleries = mock('galleries')
+    end
+    
     describe "with valid params" do
       it "updates the requested gallery" do
-        Gallery.should_receive(:find).with("37").and_return(mock_gallery)
+        mock_membre.should_receive(:galleries).and_return(@prox_galleries)
+        @prox_galleries.should_receive(:find).with("37").and_return(mock_gallery)
         mock_gallery.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, :id => "37", :gallery => {:these => 'params'}
+        put :update, :id => "37", :user_id => "2", :gallery => {:these => 'params'}
       end
 
       it "assigns the requested gallery as @gallery" do
-        Gallery.stub!(:find).and_return(mock_gallery(:update_attributes => true))
-        put :update, :id => "1"
+        mock_membre.should_receive(:galleries).and_return(@prox_galleries)
+        @prox_galleries.should_receive(:find).and_return(mock_gallery(:update_attributes => true))
+        put :update, :id => "1", :user_id => "2"
         assigns[:gallery].should equal(mock_gallery)
       end
 
       it "redirects to the gallery" do
-        Gallery.stub!(:find).and_return(mock_gallery(:update_attributes => true))
-        put :update, :id => "1"
+        mock_membre.should_receive(:galleries).and_return(@prox_galleries)
+        @prox_galleries.should_receive(:find).and_return(mock_gallery(:update_attributes => true))
+        put :update, :id => "1", :user_id => "2"
         response.should redirect_to(gallery_url(mock_gallery))
       end
     end
     
     describe "with invalid params" do
       it "updates the requested gallery" do
-        Gallery.should_receive(:find).with("37").and_return(mock_gallery)
+        mock_membre.should_receive(:galleries).and_return(@prox_galleries)
+        @prox_galleries.should_receive(:find).with("37").and_return(mock_gallery)
         mock_gallery.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, :id => "37", :gallery => {:these => 'params'}
+        put :update, :id => "37", :gallery => {:these => 'params'}, :user_id => "2"
       end
 
       it "assigns the gallery as @gallery" do
-        Gallery.stub!(:find).and_return(mock_gallery(:update_attributes => false))
-        put :update, :id => "1"
+        mock_membre.should_receive(:galleries).and_return(@prox_galleries)
+        @prox_galleries.should_receive(:find).and_return(mock_gallery(:update_attributes => false))
+        put :update, :id => "1", :user_id => "2"
         assigns[:gallery].should equal(mock_gallery)
       end
 
       it "re-renders the 'edit' template" do
-        Gallery.stub!(:find).and_return(mock_gallery(:update_attributes => false))
-        put :update, :id => "1"
+        mock_membre.should_receive(:galleries).and_return(@prox_galleries)
+        @prox_galleries.should_receive(:find).and_return(mock_gallery(:update_attributes => false))
+        put :update, :id => "1", :user_id => "2"
         response.should render_template('edit')
       end
     end
@@ -125,16 +179,22 @@ describe GalleriesController do
   end
 
   describe "DELETE destroy" do
+    
+    before(:each) do
+      User.should_receive(:find).with("2").and_return(mock_membre)
+      @prox_galleries = mock('galleries')
+    end
+    
     it "destroys the requested gallery" do
       Gallery.should_receive(:find).with("37").and_return(mock_gallery)
       mock_gallery.should_receive(:destroy)
-      delete :destroy, :id => "37"
+      delete :destroy, :id => "37", :user_id => "2"
     end
   
     it "redirects to the galleries list" do
       Gallery.stub!(:find).and_return(mock_gallery(:destroy => true))
-      delete :destroy, :id => "1"
-      response.should redirect_to(galleries_url)
+      delete :destroy, :id => "1", :user_id => "2"
+      response.should redirect_to(user_galleries_url(mock_membre))
     end
   end
 
