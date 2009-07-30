@@ -7,16 +7,34 @@ describe AssociationsController do
   end
   
   describe "GET index" do
-    it "assigns all associations as @associations" do
-      Association.stub!(:find).with(:all).and_return([mock_association])
+    
+    before(:each) do
+      @article = mock_model(Article)
+      @evenement = mock_model(Evenement)
+    end
+    
+    it "assigns the first association as @association" do
+      Association.stub!(:first).and_return(mock_association)
       get :index
-      assigns[:associations].should == [mock_association]
+      assigns[:association].should == mock_association
+    end
+    
+    it "assigns the articles of the week as @articles" do
+      Article.should_receive(:of_the_week).and_return([@article])
+      get :index
+      assigns[:articles].should == [@article]
+    end
+    
+    it "assigns the evenements to come as @evenements" do
+      Evenement.should_receive(:to_come).and_return([@evenement])
+      get :index
+      assigns[:evenements].should == [@evenement]
     end
   end
 
   describe "GET show" do
     it "assigns the requested association as @association" do
-      Association.stub!(:find).with("37").and_return(mock_association)
+      Association.should_receive(:find).with("37").and_return(mock_association)
       get :show, :id => "37"
       assigns[:association].should equal(mock_association)
     end
@@ -24,9 +42,9 @@ describe AssociationsController do
 
   describe "GET new" do
     it "assigns a new association as @association" do
-      Association.stub!(:new).and_return(mock_association)
+      Association.should_receive(:new).and_return(mock_association)
       get :new
-      assigns[:association].should equal(mock_association)
+      assigns[:association].should == (mock_association)
     end
   end
 
