@@ -106,6 +106,7 @@ div.bloc {
 	background: url(../images/bk-bloc.png) no-repeat center top;
 	height: 125px;
 	padding-top: 25px;
+	margin-left: 25px;
 }
 
 div.calendar {
