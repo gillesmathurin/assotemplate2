@@ -17,8 +17,8 @@ h1 {
 /* @group Header */
 
 div#hd {
-	height: 120px;
-	background-color: transparent;
+	height: 122px;
+	background-color: #ba0000;
 }
 
 #hd #logo {
@@ -33,23 +33,24 @@ div#hd {
 
 #hd #menu {
 	width: 972px;
-	background-color: #6b61ec;
 	position: relative;
 	display: block;
 	text-align: center;
-	border: 1px solid yellow;
-	line-height: 1.7;
+	line-height: 3;
+	background: url(../images/bk-menu.png) no-repeat;
+	height: 52px;
+	margin-left: 20px;
+	margin-top: 35px;
 }
 
 #hd #menu ul li {
 	display: inline-block;
 	text-align: center;
 	margin-right: 10px;
-	border-right: 1px solid silver;
 	padding-right: 10px;
 	font-weight: bold;
 	font-size: 1.2em;
-	border-color: white;
+	margin-top: 5px;
 }
 
 #hd #menu ul li.last {
@@ -71,6 +72,20 @@ div#hd {
 
 /* @group Body */
 
+#bd {
+	background: #dc655d url(../images/bk-bd.gif) repeat-x 0 top;
+	min-height: 768px;
+}
+
+#yui-main {
+	margin-top: 35px;
+	padding-left: 15px;
+}
+
+div.yui-b.sidebar {
+	margin-top: 35px;
+}
+
 p.info-auteur {
 }
 
@@ -86,10 +101,11 @@ p.img-auteur {
 
 div.bloc {
 	display: block;
-	padding: 10px;
-	margin-bottom: 15px;
 	text-align: center;
-	border: 1px solid silver;
+	width: 255px;
+	background: url(../images/bk-bloc.png) no-repeat center top;
+	height: 125px;
+	padding-top: 25px;
 }
 
 div.calendar {
