@@ -9,5 +9,5 @@ task :make_asso => :environment do
     :password_confirmation => "secret", :usertype => "2", :state => 'active')
   # creation d'un administrateur
   User.create(:login => "quentin", :email => "gillesmath@mac.com", :name => "quentin buster", :password => "administrateur",
-    :password_confirmation => "administrateur", :usertype => "2", :state => 'active')
+    :password_confirmation => "administrateur", :usertype => "1", :state => 'active')
 end

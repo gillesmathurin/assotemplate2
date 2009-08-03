@@ -40,7 +40,11 @@ div#hd {
 	background: url(../images/bk-menu.png) no-repeat;
 	height: 52px;
 	margin-left: 20px;
-	margin-top: 35px;
+	margin-top: 15px;
+}
+
+#hd #logo {
+	margin-left: 15px;
 }
 
 #hd #menu ul li {
@@ -137,6 +141,11 @@ table.calendar {
 /* @end */
 
 /* @group Footer */
+
+#ft {
+	background-color: #ba0000;
+	text-align: center;
+}
 
 
 
