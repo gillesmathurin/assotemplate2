@@ -1,34 +1,47 @@
 <div id="yui-main">
     <div class="yui-b">
-        <div class="yui-g">
-            <h1>A propos</h1>
+        <div class="yui-g about">
+            <h1>Bienvenue</h1>
             <p><%= @association.about_us %></p>
         </div>
                
-        <div class="yui-g">
-            <!-- TODO : Articles block -->
-            <h1>Articles récents</h1>
-            <% @articles.each do |article| %>
-            <div class="liste-article">
-                <p class="info-auteur">
-                    <%= image_tag(article.auteur.avatar.url(:thumb)) %><br/>
-                    Auteur : <%= article.auteur.name %><br/>
-                    publié le : <%= I18n.l article.created_at %>
-                </p>
-                <p class="resume-article">
-                    <%= truncate(article.body, :length => 160) %>
-                </p>
-            </div>
-            <% end %>    
-        </div>
+        <h1>Articles récents</h1>
         
-        <div class="yui-g">
-            <h1>A ne pas manquer</h1>
+        <% @articles.each do |article| %>
+        <div class="yui-g articles">                
+                <div class="info-auteur">
+                    <%= image_tag(article.user.avatar.url(:thumb)) %><br/>
+                    <%= article.user.name %><br/>
+                    <%= I18n.l article.created_at %>
+                </div>
+                
+                <div class="resume-article">
+                    <%= truncate(article.body, :length => 160) %>
+                </div>                
+        </div>
+        <% end %>
+        
+        
+        <div class="yui-g tosee">
+            <h1>A voir absolument</h1>
             <div class="yui-u first">
+                <% @evenements.each do |evt| %>
+                    <p>
+                        Date : <%= I18n.l evt.date %> | Lieu : <%= evt.lieu %><br/>
+                        <b><%= evt.titre %></b><br/><br/>
+                        <%= truncate(evt.description, :length => 80) %>
+                    </p>
+                <% end %>
                 <p>Premiere colonne</p>
             </div>
             <div class="yui-u">
-                <p>Deuxieme colonne</p>
+                <p>4 dernières galleries de photos</p>
+                <% @galleries.each do |gallery| %>
+                <p>
+                    Membre : <%= gallery.user.name %><br/>
+                    <%= gallery.titre %> : <%= gallery.description %>
+                </p>
+                <% end %>
             </div>
             <!-- TODO : infos divers block -->
         </div>

@@ -18,7 +18,11 @@ h1 {
 
 div#hd {
 	height: 122px;
-	background-color: #ba0000;
+	background: #ba0000 url(../images/bk-hd.jpg) no-repeat;
+	border-top: 2px solid #b72116;
+	border-bottom: 4px solid #b72116;
+	border-right: 2px solid #b72116;
+	border-left: 2px solid #b72116;
 }
 
 #hd #logo {
@@ -50,11 +54,10 @@ div#hd {
 #hd #menu ul li {
 	display: inline-block;
 	text-align: center;
-	margin-right: 10px;
-	padding-right: 10px;
 	font-weight: bold;
 	font-size: 1.2em;
 	margin-top: 5px;
+	margin-right: 20px;
 }
 
 #hd #menu ul li.last {
@@ -62,23 +65,33 @@ div#hd {
 }
 
 #hd #menu ul li a:hover {
-	color: yellow;
+	color: orange;
 }
 
 #hd #menu ul li a {
 	text-decoration: none;
-	color: #a4001f;
+	color: #5a5a5a;
 }
-
-
 
 /* @end */
 
 /* @group Body */
 
+div.yui-g.about {
+	background-color: #c8edfe;
+	padding: 7px;
+	margin-bottom: 10px;
+	margin-top: 5px;
+}
+
+div.yui-g.articles {
+	margin-bottom: 10px;
+}
+
 #bd {
-	background: #dc655d url(../images/bk-bd.gif) repeat-x 0 top;
+	background: white none repeat-x 0 top;
 	min-height: 768px;
+	border: 1px solid silver;
 }
 
 #yui-main {
@@ -90,7 +103,12 @@ div.yui-b.sidebar {
 	margin-top: 35px;
 }
 
-p.info-auteur {
+div.info-auteur {
+	float: left;
+	margin-right: 10px;
+	font-size: 0.9em;
+	color: #eda096;
+	text-align: center;
 }
 
 p.info-auteur span {

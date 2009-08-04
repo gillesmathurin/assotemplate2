@@ -4,7 +4,7 @@ class Article < ActiveRecord::Base
   
   has_attached_file :photo, :styles => { :thumb => "100x100>", :medium => "300x300>" }
   
-  named_scope :of_the_week, :conditions => ['created_at < ?', 7.days]
+  named_scope :of_the_week, :conditions => ['created_at < ?', Date.today+7]
   
   named_scope :of_the_month, :conditions => ['created_at between ? and ?', Date.today.beginning_of_month, Date.today.end_of_month],
    :order => 'created_at desc'

@@ -6,7 +6,7 @@ task :load_fakedatas => :environment do
   Evenement.delete_all
   Comment.delete_all
   Faq.delete_all
-  User.delete_all
+  # User.delete_all
   Gallery.delete_all
   
   # Creation de l'association
