@@ -15,10 +15,7 @@ class AssociationsController < ApplicationController
       format.xml  { render :xml => @association }
     end
   end
-  
-  def contact    
-  end
-  
+    
   # GET /associations/1
   # GET /associations/1.xml
   def show
