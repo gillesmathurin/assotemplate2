@@ -25,20 +25,23 @@
         <div class="yui-g tosee">
             <h1>A voir absolument</h1>
             <div class="yui-u first">
+                <h2>Evenements</h2>
                 <% @evenements.each do |evt| %>
                     <p>
-                        Date : <%= I18n.l evt.date %> | Lieu : <%= evt.lieu %><br/>
-                        <b><%= evt.titre %></b><br/><br/>
+                        <b><%= evt.titre %></b><br/>
+                        <span class="date-info">
+                            Le : <%= I18n.l evt.date %> - <%= evt.lieu %>
+                        </span><br/>
+                        
                         <%= truncate(evt.description, :length => 80) %>
                     </p>
                 <% end %>
-                <p>Premiere colonne</p>
             </div>
             <div class="yui-u">
-                <p>Les plus récentes galleries</p>
+                <h2>Galleries récentes</h2>
                 <% @galleries.each do |gallery| %>
                 <p>
-                    Membre : <%= gallery.user.name %><br/>
+                    <b>Membre : <%= gallery.user.name %></b><br/>
                     <%= link_to gallery.titre, gallery_path(gallery) %> : <%= truncate(gallery.description, :length => 80) %>
                 </p>
                 <% end %>
