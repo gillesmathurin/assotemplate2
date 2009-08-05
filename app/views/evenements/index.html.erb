@@ -1,9 +1,7 @@
 <div id="yui-main">
     <div class="yui-b">
         
-        <div class="yui-g">
-            <h1 class="accroche">Evenement du Mois</h1>
-        </div>
+        <h1>Evénements du Mois</h1>
                 
         <div class="yui-g">
                  <% if !@evenements.blank? %>
@@ -33,10 +31,12 @@
 </div>
 
 <div class="yui-b sidebar">
-    <%= render :partial => "shared/identification" %>
-     <% @date = Date.today %>
-
-     <%= calendar_for(@date.year, @date.month, :next_and_previous_month => [ "%b", lambda { |@date| evenements_du_mois_path(@date) }], &calendar_events_proc) %>
+    <% @date = Date.today %>
+    <div class="bloc contact">
+        <%= calendar_for(@date.year, @date.month, :next_and_previous_month => [ "%b", lambda { |@date| evenements_du_mois_path(@date) }], &calendar_events_proc) %>
+    </div>
+        
+    <%= render :partial => "shared/identification" %> 
 </div>
 
 

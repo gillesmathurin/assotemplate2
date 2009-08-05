@@ -1,7 +1,8 @@
 <div id="yui-main">
     <div class="yui-b">
+        <h1>ARTICLES DU MOIS</h1>
+        
         <div class="yui-g">
-            <h1>ARTICLES DU MOIS</h1>
 
             <% @articles.each do |article| %>
             <div class="liste-article">
@@ -25,22 +26,21 @@
                 
             </div>
             <% end %>
-
+            
+            <p><%= link_to 'Rédiger un article', new_article_path  if logged_in? %></p>
             
         </div>
     </div>
 </div>
 
 <div class="yui-b sidebar">
-    <%= render :partial => "shared/identification" %>
-    <p><%= link_to 'Rédiger un article', new_article_path  if logged_in? %></p>
-    
-    <div class="yui-g calendar">
+    <div class="bloc contact">
         <h3 class="red">Archives</h3>
         <% @date = Date.today %>
 
         <%= calendar_for(@date.year, @date.month, :next_and_previous_month => [ "%b", lambda { |@date| articles_du_mois_path(@date) }], &articles_proc) %>
     </div>
     
+    <%= render :partial => "shared/identification" %>    
 </div>
 

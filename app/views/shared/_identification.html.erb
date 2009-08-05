@@ -17,4 +17,16 @@
             <p><%= link_to "Identifiez-vous", login_path() %></p>
         <% end %>
     </div>
+    
+    <div class="bloc contact">
+        <h2>Contacts</h2>
+        <p>
+            <%= @association.adresse %><br/>
+            <%= @association.cp %><br/>
+            <%= @association.ville %><br/>
+            Tel : <%= @association.tel %><br/>
+            Fax : <%= @association.fax %><br/>
+            Email : <%= @association.email %>
+        </p>
+    </div>
 </div>

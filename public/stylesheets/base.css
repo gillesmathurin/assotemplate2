@@ -24,7 +24,7 @@ h2 {
 
 div#hd {
 	height: 122px;
-	background: #ba0000 url(../images/bk-hd.jpg) no-repeat;
+	background: #de7268 url(../images/bk-hd.jpg) no-repeat;
 	border-top: 2px solid #b72116;
 	border-bottom: 4px solid #b72116;
 	border-right: 2px solid #b72116;
@@ -170,6 +170,11 @@ div.bloc {
 	margin-left: 25px;
 }
 
+div.bloc.contact {
+	background: url(../images/bk-contact.png) no-repeat center top;
+	height: 190px;
+}
+
 div.calendar {
 	border: 1px solid silver;
 	padding: 10px;
@@ -184,7 +189,7 @@ div.calendar h3 {
 
 table.calendar {
 	display: block;
-	padding-left: 70px;
+	padding-left: 45px;
 }
 
 /* @group Flash-Errors */
@@ -200,8 +205,10 @@ table.calendar {
 /* @group Footer */
 
 #ft {
-	background-color: #ba0000;
+	background-color: #b72116;
 	text-align: center;
+	padding: 5px;
+	color: silver;
 }
 
 

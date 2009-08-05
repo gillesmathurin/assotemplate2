@@ -36,7 +36,12 @@
     </div>
     
     <div id="ft">
-        <%= @association.nom %> Copyright @ 2009 - Tous droits réservés - Conception : GMWebAgency
+        <p>
+            <%= @association.nom %> Copyright @ 2009  <%= - Date.today.year unless Date.today.year == 2009 %> - Tous droits réservés - Conception : <%= link_to "GMWebAgency", "http://www.gmwebagency.com" %>
+        </p>
+        <p>
+            Rue Lethière 97180 Sainte-Anne
+        </p>
     </div>
 </div>
 
