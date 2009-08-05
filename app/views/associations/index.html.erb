@@ -35,11 +35,11 @@
                 <p>Premiere colonne</p>
             </div>
             <div class="yui-u">
-                <p>4 dernières galleries de photos</p>
+                <p>Les plus récentes galleries</p>
                 <% @galleries.each do |gallery| %>
                 <p>
                     Membre : <%= gallery.user.name %><br/>
-                    <%= gallery.titre %> : <%= gallery.description %>
+                    <%= link_to gallery.titre, gallery_path(gallery) %> : <%= truncate(gallery.description, :length => 80) %>
                 </p>
                 <% end %>
             </div>

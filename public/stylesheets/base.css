@@ -55,9 +55,13 @@ div#hd {
 	display: inline-block;
 	text-align: center;
 	font-weight: bold;
+	margin-top: 8px;
+	margin-right: 10px;
+	border-right: 2px groove #f6f6f6;
 	font-size: 1.2em;
-	margin-top: 5px;
-	margin-right: 20px;
+	padding-right: 10px;
+	line-height: 3;
+	height: 40px;
 }
 
 #hd #menu ul li.last {
@@ -77,11 +81,34 @@ div#hd {
 
 /* @group Body */
 
+.yui-b>h1 {
+	background: url(../images/bk_h1.png) no-repeat left top;
+	height: 40px;
+	line-height: 30px;
+	padding-left: 15px;
+	padding-top: 5px;
+	color: white;
+	margin-top: 15px;
+	margin-bottom: 10px;
+}
+
+.yui-g.tosee>h1 {
+	background: url(../images/bk_h1.png) no-repeat left top;
+	height: 40px;
+	line-height: 30px;
+	padding-left: 15px;
+	padding-top: 5px;
+	color: white;
+	margin-top: 15px;
+	margin-bottom: 10px;
+}
+
 div.yui-g.about {
-	background-color: #c8edfe;
+	background-color: #fede58;
 	padding: 7px;
 	margin-bottom: 10px;
 	margin-top: 5px;
+	border: 2px double silver;
 }
 
 div.yui-g.articles {
@@ -109,6 +136,7 @@ div.info-auteur {
 	font-size: 0.9em;
 	color: #eda096;
 	text-align: center;
+	font-style: italic;
 }
 
 p.info-auteur span {
