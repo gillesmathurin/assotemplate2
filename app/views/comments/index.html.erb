@@ -2,7 +2,6 @@
     <div class="yui-b">
         <div class="yui-g">
             <h1 class="accroche">Commentaires de l'article <%= @article.titre %></h1>
-            <%= link_to "Retour à l'article", article_path(@article) %>
         </div>
         
         <% if !@comments.blank? %>
@@ -10,7 +9,7 @@
           <% for comment in @comments %>
              <div class="yui-g">
                  <p>
-                    <b>De :</b> <%= comment.author.login %> publié le : <%= I18n.l comment.created_at %>
+                    <b>De :</b> <%= comment.auteur %> publié le : <%= I18n.l comment.created_at %>
                  </p>
                  <%= comment.body %>
              </div>
@@ -34,7 +33,7 @@
         <% end %>
         
         <div class="yui-g">
-            <%= link_to "Retour à l'article", article_path(@article) %>
+            <p><%= link_to "Retour à l'article", article_path(@article) %></p>
         </div>
     </div>
     
