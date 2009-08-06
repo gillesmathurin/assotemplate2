@@ -26,12 +26,15 @@
                 </tr>
                 <% end %>
             </table>
+            <% else %>
+                <p>
+                    Pas encore de membres inscrits.
+                </p>
             <% end %>
-            
         </div>
     </div>
 </div>
 
 <div class="yui-b sidebar">
-    
+    <%= render :partial => "shared/identification" %>
 </div>
