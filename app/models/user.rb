@@ -35,6 +35,10 @@ class User < ActiveRecord::Base
   # fetch the member and admin category users
   named_scope :membres, :conditions => ['usertype = ?', 2]
   named_scope :admins, :conditions => ['usertype = ?', 1]
+  
+  def to_param
+    "#{id}-#{login}"
+  end
     
   def categorie_to_s
     case categorie

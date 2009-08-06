@@ -1,2 +1,24 @@
-<%= @membre.login || current_user.login %>
-<%= link_to "Voir galleries", user_galleries_path(@membre) %>
+<div id="yui-main">
+    <div class="yui-b">
+        
+        <h1>Profil de <%= @membre.login || current_user.login %></h1>
+        
+        <div class="yui-g">            
+            <p>
+                <%= @membre.profil %>
+            </p>
+        </div>
+        
+        <div class="yui-g">
+            <p>
+                <%= link_to "Voir galleries", user_galleries_path(@membre) %>
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="yui-b sidebar">
+    <%= render :partial => "shared/identification" %>
+</div>
+
+
