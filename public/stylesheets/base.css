@@ -193,6 +193,11 @@ table.calendar {
 	padding-left: 45px;
 }
 
+div.yui-g>table.membre {
+	text-align: center;
+	width: 100%;
+}
+
 /* @group Flash-Errors */
 
 

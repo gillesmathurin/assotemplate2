@@ -1,24 +1,31 @@
 <div id="yui-main">
     <div class="yui-b">
-        <div class="yui-g">
-            <h1>Nos Membres</h1>
-            
+        
+        <h1>Nos Membres</h1>
+        
+        <div class="yui-g">                        
             <% if !@membres.blank? %>
-              <% for membre in @membres %>
-                <div class="membre">
-                    <p>
-                        <%= membre.avatar.url(:thumb) if membre.avatar? %>
-                    </p>
-                    <p>
-                        <%=h membre.login %>
-                    </p>
-                    <p>
-                        <%=h membre.profil %>
-                    </p>
-                </div>
-              <% end %>
-            <% else %>
-              
+            <table border="1" class="membre">
+                <% @membres.in_groups_of(4, false) do |group| %>
+                <tr>
+                    <% group.each do |membre| %>
+                    <td>
+                        <div class="membre">
+                            <p>
+                                <%= membre.avatar.url(:thumb) if membre.avatar? %>
+                            </p>
+                            <p>
+                                <%=h membre.login %>
+                            </p>
+                            <p>
+                                <%=h membre.profil %>
+                            </p>
+                        </div>
+                    </td>
+                    <% end %>
+                </tr>
+                <% end %>
+            </table>
             <% end %>
             
         </div>
