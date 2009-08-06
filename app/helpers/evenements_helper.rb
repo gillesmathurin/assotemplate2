@@ -10,7 +10,7 @@ module EvenementsHelper
   end
   
   def has_photo?(evenement)
-    if evenement.photo.url != "/photos/original/missing.png"
+    if evenement.picture.url != "/photos/original/missing.png"
       return true
     else
       return false

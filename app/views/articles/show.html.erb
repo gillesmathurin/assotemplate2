@@ -6,7 +6,7 @@
         
         <div class="yui-g">
             <p class="article_photo">
-                <%= image_tag @article.photo.url(:thumb) if has_photo?(@article) %>
+                <%= image_tag @article.photo.url(:thumb) if has_image?(@article) %>
             </p>        
             <p>
                 <%= @article.body %>
@@ -32,7 +32,7 @@
             <% if !@article.comments.last_five.blank? %>
                 <% for comment in @article.comments.last_five %>
                       <div class="comment">
-                          <b>De : <%= comment.author.login %></b>
+                          <b>De : <%= comment.auteur %></b>
                           <%= comment.body %>
                           <% if admin? %>
                               <%= link_to "(-) Supprimer", article_comment_path(@article, comment),
@@ -53,5 +53,5 @@
 
 
 
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>
+<%= link_to 'Modifier', edit_article_path(@article) %> |
+<%= link_to 'Retour', articles_path %>

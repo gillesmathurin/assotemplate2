@@ -9,7 +9,7 @@ module ArticlesHelper
     end
   end
   
-  def has_photo?(article)
+  def has_image?(article)
     if article.photo.url != "/photos/original/missing.png"
       return true
     else

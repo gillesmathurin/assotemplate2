@@ -4,7 +4,7 @@
             <h1 class="accroche"><%= @evenement.titre %></h1>
             <p>
                 <b>Date :</b><%= I18n.l @evenement.date %> | <b>Lieu :</b><%= @evenement.lieu %><br/>
-                <b>De :</b> <%= @evenement.hdebut.strftime("%H:%M") if @evenement.hdebut %> <b>À :</b> <%= @evenement.hfin.strftime("%H:%M") if @evenement.hfin %>
+                <b>De :</b> <%= @evenement.h_debut.strftime("%H:%M") if @evenement.h_debut %> <b>À :</b> <%= @evenement.h_fin.strftime("%H:%M") if @evenement.h_fin %>
             </p>
         </div>
         
@@ -29,5 +29,9 @@
 </div>
 
 <div class="yui-b sidebar">
+    <% @date = Date.today %>
+    <div class="bloc contact">
+        <%= calendar_for(@date.year, @date.month, :next_and_previous_month => [ "%b", lambda { |@date| evenements_du_mois_path(@date) }], &calendar_events_proc) %>
+    </div>
     <%= render :partial => "shared/identification" %>
 </div>
