@@ -1,8 +1,6 @@
 <div id="yui-main">
     <div class="yui-b">
-        <div class="yui-g">
-            <h1>FAQS - Questions fréquemment posées</h1>
-        </div>
+        <h1>FAQS - Questions fréquemment posées</h1>
         
         <div class="yui-g">
             <% @faqs.each do |faq| %>
@@ -28,10 +26,10 @@
 </div>
 
 <div class="yui-b sidebar">
-    <%= render :partial => "shared/identification" %>
-    
     <% if admin? %>
     <p><%= link_to 'Ajouter une faq', new_faq_path %></p>
     <% end %>
+    
+    <%= render :partial => "shared/identification" %>
 </div>
 
