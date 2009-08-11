@@ -1,12 +1,15 @@
 <div id="yui-main">
     <div class="yui-b">
         
-        <h1>Profil de <%= @membre.login || current_user.login %></h1>
+        <h1>Profil de <%= @membre.login %></h1>
         
         <div class="yui-g">            
             <p>
                 <%= @membre.profil %>
             </p>
+            <% if member? && @membre == current_user %>
+                <%= link_to "Modifier le profil", edit_user_path(@membre) %>
+            <% end %>
         </div>
         
         <div class="yui-g">

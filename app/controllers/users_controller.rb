@@ -21,11 +21,11 @@ class UsersController < ApplicationController
   end
   
   def show
-    unless current_user
+    @membre = User.find(params[:id])
+  end
+  
+  def edit
       @membre = User.find(params[:id])
-    else
-      @membre = current_user
-    end
   end
  
   def create
@@ -35,9 +35,9 @@ class UsersController < ApplicationController
     success = @user && @user.valid?
     if success && @user.errors.empty?
       redirect_back_or_default('/')
-      flash[:notice] = "Thanks for signing up!  We're sending you an email with your activation code."
+      flash[:notice] = "Merci de votre inscription. Nous vous envoyons un email d'activation"
     else
-      flash[:error]  = "We couldn't set up that account, sorry.  Please try again, or contact an admin (link is above)."
+      flash[:error]  = "Désolé, nous n'avons pas pu créer ce compte. Essayer encore."
       render :action => 'new'
     end
   end
