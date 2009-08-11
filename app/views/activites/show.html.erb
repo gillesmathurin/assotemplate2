@@ -1,0 +1,33 @@
+<p>
+  <b>Nom:</b>
+  <%=h @activite.nom %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @activite.description %>
+</p>
+
+<p>
+  <b>Tarif:</b>
+  <%=h @activite.tarif %>
+</p>
+
+<p>
+  <b>Public:</b>
+  <%=h @activite.public %>
+</p>
+
+<p>
+  <b>Lieu:</b>
+  <%=h @activite.lieu %>
+</p>
+
+<p>
+  <b>Horaire:</b>
+  <%=h @activite.horaire %>
+</p>
+
+
+<%= link_to 'Edit', edit_activite_path(@activite) %> |
+<%= link_to 'Back', activites_path %>

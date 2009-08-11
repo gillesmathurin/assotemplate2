@@ -1,0 +1,34 @@
+<div id="yui-main">
+    <div class="yui-b">
+        
+        <h1>Liste des activités</h1>
+        
+        <div class="yui-g">
+            <% if !@activites.blank? %>
+                <% for activite in @activites %>
+                  <p>
+                    <b><%= activite.nom %></b>
+                  </p>
+                  <p>
+                    <%= activite.description %>
+                  </p>
+                  <pre>
+                    Horaire : <%= activite.horaire %><br/>
+                    Public : <%= activite.public_recu %><br/>
+                    Lieu : <%= activite.lier %>
+                  </pre>
+                 <% end %>
+            <% end %>
+        </div>
+        
+        <div class="yui-g">
+            <% if logged_in? %>
+                <%= link_to 'New activite', new_activite_path %>
+            <% end %>
+        </div>
+    </div>
+</div>
+
+<div class="yui-b sidebar">
+    <%= render :partial => "shared/identification" %>
+</div>

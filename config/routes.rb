@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :activites
+
   map.resources :associations, :has_many => :faqs
 
   map.resources :comments

@@ -26,6 +26,7 @@
             <h1>A voir absolument</h1>
             <div class="yui-u first">
                 <h2>Evénements</h2>
+                <% if !@evenements.blank? %>
                 <% @evenements.each do |evt| %>
                     <p>
                         <b><%= evt.titre %></b><br/>
@@ -34,6 +35,11 @@
                         </span><br/>
                         
                         <%= truncate(evt.description, :length => 80) %>
+                    </p>
+                <% end %>
+                <% else %>
+                    <p>
+                        Pas d'événement pour cette semaine
                     </p>
                 <% end %>
             </div>
@@ -46,7 +52,6 @@
                 </p>
                 <% end %>
             </div>
-            <!-- TODO : infos divers block -->
         </div>
     </div>
 </div>
