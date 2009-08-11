@@ -1,0 +1,14 @@
+<div id="yui-main">
+    <div class="yui-b">
+        <h1>Modifier votre profil</h1>
+        
+        <div class="yui-g">
+            <%= error_messages_for :membre %>
+            <% form_for :membre, :url => users_path do |f| -%>
+                <p>
+                    <%= label_tag "Login" %>
+                </p>
+            <%- end -%>
+        </div>
+    </div>
+</div>
