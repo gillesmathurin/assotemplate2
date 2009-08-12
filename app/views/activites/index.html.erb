@@ -10,20 +10,30 @@
                     <b><%= activite.nom %></b>
                   </p>
                   <p>
+                      Horaire : <%= activite.horaire %><br/>
+                      Public : <%= activite.public_recu %><br/>
+                      Lieu : <%= activite.lieu %>
+                    </p>
+                  <p>
                     <%= activite.description %>
                   </p>
-                  <pre>
-                    Horaire : <%= activite.horaire %><br/>
-                    Public : <%= activite.public_recu %><br/>
-                    Lieu : <%= activite.lier %>
-                  </pre>
+                  <p>
+                    <%= link_to "Détails", activite_path(activite) %>
+                  </p>
+                  <p>
+                    <% if logged_in? %>
+                        <%= link_to 'Modifier', edit_activite_path(activite) %> |
+                        <%= link_to "Supprimer cette activité", activite_path(activite), :method => :delete %>
+                    <% end %>
+                  </p>
                  <% end %>
             <% end %>
         </div>
         
         <div class="yui-g">
             <% if logged_in? %>
-                <%= link_to 'New activite', new_activite_path %>
+                <hr>
+                <%= link_to 'Enregistrez une activité', new_activite_path %>
             <% end %>
         </div>
     </div>

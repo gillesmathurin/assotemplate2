@@ -1,35 +1,26 @@
-<h1>New activite</h1>
+<div id="yui-main">
+    <div class="yui-b">
+        <h1>Enregistrez une activité</h1>
+        
+        <div class="yui-g">
+            <% form_for(@activite) do |f| %>
+              <%= f.error_messages %>
 
-<% form_for(@activite) do |f| %>
-  <%= f.error_messages %>
+              <%= render :partial => 'form', :locals => {:f => f} %>
 
-  <p>
-    <%= f.label :nom %><br />
-    <%= f.text_field :nom %>
-  </p>
-  <p>
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </p>
-  <p>
-    <%= f.label :tarif %><br />
-    <%= f.text_field :tarif %>
-  </p>
-  <p>
-    <%= f.label :public %><br />
-    <%= f.text_field :public %>
-  </p>
-  <p>
-    <%= f.label :lieu %><br />
-    <%= f.text_field :lieu %>
-  </p>
-  <p>
-    <%= f.label :horaire %><br />
-    <%= f.text_field :horaire %>
-  </p>
-  <p>
-    <%= f.submit 'Create' %>
-  </p>
-<% end %>
+              <p>
+                <%= f.submit 'Enregistrer' %>
+              </p>
+            <% end %>
 
-<%= link_to 'Back', activites_path %>
+            <%= link_to 'Retour', activites_path %>
+        </div>
+    </div>
+</div>
+
+<div class="yui-b sidebar">
+    <%= render :partial => "shared/identification" %>
+</div>
+
+
+

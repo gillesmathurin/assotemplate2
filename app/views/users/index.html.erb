@@ -20,6 +20,11 @@
                             <p>
                                 <%= link_to "Voir profil", user_path(membre) %>
                             </p>
+                            <% if admin? %>
+                            <p>
+                                <%= link_to "Supprimer", user_path(membre), :method => :delete %>
+                            </p>
+                            <% end %>
                         </div>
                     </td>
                     <% end %>

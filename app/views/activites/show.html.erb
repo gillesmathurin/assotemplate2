@@ -1,33 +1,39 @@
-<p>
-  <b>Nom:</b>
-  <%=h @activite.nom %>
-</p>
+<div id="yui-main">
+    <div class="yui-b">
+        <h1><%= @activite.nom %></h1>
+        
+        <div class="yui-g">
+            <p>
+              <b>Description:</b>
+              <%= @activite.description %>
+            </p>
 
-<p>
-  <b>Description:</b>
-  <%=h @activite.description %>
-</p>
+            <p>
+              <b>Tarif:</b>
+              <%=h @activite.tarif %>
+            </p>
 
-<p>
-  <b>Tarif:</b>
-  <%=h @activite.tarif %>
-</p>
+            <p>
+              <b>Public:</b>
+              <%=h @activite.public_recu %>
+            </p>
 
-<p>
-  <b>Public:</b>
-  <%=h @activite.public %>
-</p>
+            <p>
+              <b>Lieu:</b>
+              <%=h @activite.lieu %>
+            </p>
 
-<p>
-  <b>Lieu:</b>
-  <%=h @activite.lieu %>
-</p>
-
-<p>
-  <b>Horaire:</b>
-  <%=h @activite.horaire %>
-</p>
-
-
-<%= link_to 'Edit', edit_activite_path(@activite) %> |
-<%= link_to 'Back', activites_path %>
+            <p>
+              <b>Horaire:</b>
+              <%=h @activite.horaire %>
+            </p>
+        </div>
+    </div>
+    
+    <div class="yui-g">
+        <% if logged_in? %>
+            <p><%= link_to 'Modifier', edit_activite_path(@activite) %> |
+            <%= link_to 'Retour', activites_path %></p>
+        <% end %>
+    </div>
+</div>

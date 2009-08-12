@@ -1,4 +1,7 @@
 class ActivitesController < ApplicationController
+  before_filter :admin_login_required, :only => [:new, :edit, :destroy]
+  uses_tiny_mce :options => { :theme => 'simple' }
+  
   # GET /activites
   # GET /activites.xml
   def index
