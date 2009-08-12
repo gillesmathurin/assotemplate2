@@ -18,7 +18,7 @@ class UsersController < ApplicationController
 
   # render new.rhtml
   def new
-    @user = User.new
+    @user = User.new(:usertype => 2)
   end
   
   def show

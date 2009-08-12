@@ -6,13 +6,15 @@
             <%= error_messages_for :membre %>
             <% form_for(@membre) do |f| -%>
                 <p>
-                    <%= label_tag "Identifiant" %> : <br/>
-                    <%= f.text_field :login %>
-                </p>
-                <p>
                     <%= label_tag "Profil" %> : <br/>
                     <%= f.text_area :profil, :class => 'mceEditor', :rows => 10 %>
                 </p>
+                <p>
+                    <%= label_tag "Photo de profil" %> : <br/>
+                    <%= f.file_field :avatar %>
+                </p>
+                
+                <p><%= submit_tag "Enregistrer" %></p>
             <%- end -%>
         </div>
     </div>
