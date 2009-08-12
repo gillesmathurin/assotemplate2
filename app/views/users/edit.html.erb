@@ -3,8 +3,8 @@
         <h1>Modifier votre profil</h1>
         
         <div class="yui-g">
-            <%= error_messages_for :membre %>
-            <% form_for(@membre) do |f| -%>
+            <% form_for(@user) do |f| -%>
+            <%= f.error_messages %>
                 <p>
                     <%= label_tag "Profil" %> : <br/>
                     <%= f.text_area :profil, :class => 'mceEditor', :rows => 10 %>
