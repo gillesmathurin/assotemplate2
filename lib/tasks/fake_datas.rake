@@ -1,7 +1,7 @@
 desc "Creation de données factices dans la base de données"
 task :load_fakedatas => :environment do
   # Suppression des données de la base
-  Association.delete_all
+  # Association.delete_all
   Article.delete_all
   Evenement.delete_all
   Comment.delete_all
@@ -10,10 +10,10 @@ task :load_fakedatas => :environment do
   Gallery.delete_all
   
   # Creation de l'association
-  @association = Association.create(:nom => "Agouti", :adresse => "rue Lethière", :email => Faker::Internet.email,
-   :cp => Faker::Address.zip_code,
-   :ville => Faker::Address.city, :tel => Faker::PhoneNumber.phone_number, :fax => Faker::PhoneNumber.phone_number,
-   :about_us => Faker::Lorem.paragraph, :date_creation => "1980-05-24")
+  # @association = Association.create(:nom => "Agouti", :adresse => "rue Lethière", :email => Faker::Internet.email,
+  #  :cp => Faker::Address.zip_code,
+  #  :ville => Faker::Address.city, :tel => Faker::PhoneNumber.phone_number, :fax => Faker::PhoneNumber.phone_number,
+  #  :about_us => Faker::Lorem.paragraph, :date_creation => "1980-05-24")
   
   # Creation des Users-Membres
   1.upto(4) do |x|
