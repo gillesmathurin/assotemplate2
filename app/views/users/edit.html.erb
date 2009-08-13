@@ -3,7 +3,7 @@
         <h1>Modifier votre profil</h1>
         
         <div class="yui-g">
-            <% form_for(@user) do |f| -%>
+            <% form_for(@user, :html => {:multipart => true}) do |f| -%>
             <%= f.error_messages %>
                 <p>
                     <%= label_tag "Profil" %> : <br/>

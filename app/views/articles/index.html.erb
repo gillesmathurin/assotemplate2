@@ -3,6 +3,8 @@
         <h1>ARTICLES DU MOIS</h1>
         
         <div class="yui-g">
+            
+            <p><%= link_to 'Rédiger un article', new_article_path, :class => "lien-ajout"  if logged_in? %></p>
 
             <% @articles.each do |article| %>
             <div class="liste-article">
@@ -26,8 +28,6 @@
                 
             </div>
             <% end %>
-            
-            <p><%= link_to 'Rédiger un article', new_article_path  if logged_in? %></p>
             
         </div>
     </div>

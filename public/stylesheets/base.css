@@ -210,6 +210,23 @@ p.question {
 	color: teal;
 }
 
+a.lien-ajout {
+	background-color: #e19ecc;
+	padding: 5px;
+	text-decoration: none;
+	border: 2px double #fefb00;
+	color: #000;
+}
+
+div.yui-g>table {
+	margin-bottom: 15px;
+	width: 100%;
+}
+
+div.yui-g>table td {
+	padding: 5px;
+}
+
 /* @group Flash-Errors */
 
 

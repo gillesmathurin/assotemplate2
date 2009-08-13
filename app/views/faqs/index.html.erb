@@ -3,6 +3,8 @@
         <h1>FAQS - Questions fréquemment posées</h1>
         
         <div class="yui-g">
+            <p><%= link_to '+ Ajouter une faq', new_faq_path, :class => "lien-ajout" %></p>
+            
             <% @faqs.each do |faq| %>
                 <p class="question">
                     <%=h faq.question %> ?
@@ -11,7 +13,6 @@
                     <%= faq.reponse %>
                 </p>
                 <% if admin? %>
-                <p><%= link_to 'Ajouter une faq', new_faq_path %></p>
                 <p><%= link_to 'Modifier', edit_faq_path(faq) %></p>
                 <p>
                     <%= link_to 'Supprimer', faq, :confirm => 'Are you sure?', :method => :delete %>

@@ -16,9 +16,24 @@
         </div>
         
         <div class="yui-g">
+            <h2>Actions possibles</h2>
+            <% if logged_in? %>
+            <table border="0" cellspacing="5" cellpadding="5">
+                <tr>
+                    <td><%= link_to "+ Rédiger un article", new_user_article_path(@membre), :class => "lien-ajout" %></td>
+                    <td><%= link_to "+ Ajouter une gallerie", new_user_gallery_path(@membre), :class => "lien-ajout" %></td>
+                    <td>
+                        <%= link_to "+ Ajouter un évenement", new_evenement_path(), :class => "lien-ajout" %>
+                    </td>
+                </tr>
+            </table>
+            <% end %>
+        </div>
+        
+        <div class="yui-g">
             <h2>Les galleries d'images</h2>
             <p>
-                <%= @membre.galleries.size %> galleries d'images.<br/> <%= link_to "Ajouter une gallerie", new_user_gallery_path(@membre) %>
+                <%= @membre.galleries.size %> galleries d'images.<br/> 
             </p>
             <% if !@membre.galleries.blank? %>
             <table>
