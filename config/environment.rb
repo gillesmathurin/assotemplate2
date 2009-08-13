@@ -5,14 +5,15 @@ RAILS_GEM_VERSION = '2.3.3' unless defined? RAILS_GEM_VERSION
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
+require 'tlsmail' 
 
 Rails::Initializer.run do |config|
   config.gem 'rubyist-aasm', :lib => 'aasm', :version => '>=2.0.5'
   # config.gem 'mislav-will_paginate', :lib => 'will_paginate', :version => '~> 2.3.11'
   config.gem 'webrat', :lib => false, :version => '>=0.4.3'
   config.gem 'cucumber', :lib => false, :version => '>=0.3.0'
-  config.gem 'rspec-rails', :lib => false, :version => '>=1.2.6'
-  config.gem 'rspec', :lib => false, :version => '>=1.2.6'
+  config.gem 'rspec-rails', :lib => false#, :version => '>=1.2.6'
+  config.gem 'rspec', :lib => false#, :version => '>=1.2.6'
   config.gem 'faker', :lib => false, :version => '>=0.3.1'
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
