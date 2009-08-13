@@ -15,14 +15,14 @@
                                 <%= image_tag(membre.avatar.url(:thumb)) %>
                             </p>
                             <p>
-                                <%=h membre.login %>
+                                <%=h membre.login %> 
                             </p>
                             <p>
-                                <%= link_to "Voir profil", user_path(membre) %>
+                                <%= link_to "Voir profil", user_path(membre.id) %>
                             </p>
                             <% if admin? %>
                             <p>
-                                <%= link_to "Supprimer", user_path(membre), :method => :delete %>
+                                <%= link_to "Supprimer", user_path(membre.id), :method => :delete %>
                             </p>
                             <% end %>
                         </div>
