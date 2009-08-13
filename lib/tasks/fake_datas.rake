@@ -1,7 +1,7 @@
 desc "Creation de données factices dans la base de données"
 task :load_fakedatas => :environment do
   # Suppression des données de la base
-  Association.delete_all
+  # Association.delete_all
   Article.delete_all
   Evenement.delete_all
   Comment.delete_all
