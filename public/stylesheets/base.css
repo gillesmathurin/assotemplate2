@@ -21,6 +21,12 @@ h2 {
 	margin-bottom: 10px;
 }
 
+h3.green {
+	color: teal;
+	font-weight: bold;
+	font-size: 1.2em;
+}
+
 /* @group Header */
 
 div#hd {
