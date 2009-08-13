@@ -41,7 +41,7 @@ class User < ActiveRecord::Base
   end
     
   def categorie_to_s
-    case categorie
+    case usertype
     when "0"
       return "Super Administrateur"
     when "1"

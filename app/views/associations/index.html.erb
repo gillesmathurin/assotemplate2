@@ -47,7 +47,7 @@
                 <% @galleries.each do |gallery| %>
                 <p>
                     <b>Membre : <%= gallery.user.name %></b><br/>
-                    <%= link_to gallery.titre, gallery_path(gallery) %> : <%= truncate(gallery.description, :length => 80) %>
+                    <%= link_to gallery.titre, user_gallery_path(gallery.user, gallery) %> : <%= truncate(gallery.description, :length => 80) %>
                 </p>
                 <% end %>
             </div>
