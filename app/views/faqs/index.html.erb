@@ -3,7 +3,9 @@
         <h1>FAQS - Questions fréquemment posées</h1>
         
         <div class="yui-g">
+            <% if admin? %>
             <p><%= link_to '+ Ajouter une faq', new_faq_path, :class => "lien-ajout" %></p>
+            <% end %>
             
             <% @faqs.each do |faq| %>
                 <p class="question">
