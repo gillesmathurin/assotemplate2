@@ -16,9 +16,26 @@
         </div>
         
         <div class="yui-g">
+            <h2>Les galleries d'images</h2>
             <p>
-                <%= link_to "Voir galleries", user_galleries_path(@membre) %>
+                <%= @membre.galleries.size %> galleries d'images.<br/> <%= link_to "Ajouter une gallerie", new_user_gallery_path(@membre) %>
             </p>
+            <% if !@membre.galleries.blank? %>
+            <table>
+                <% for gallery in @membre.galleries do %>
+                <tr>
+                    <td><%= image_tag(gallery.photo1.url(:thumb)) unless gallery.photo1.url.blank? %></td>
+                    <td><%= image_tag(gallery.photo2.url(:thumb)) unless gallery.photo2.url.blank? %></td>
+                    <td><%= image_tag(gallery.photo3.url(:thumb)) unless gallery.photo3.url.blank? %></td>
+                    <td><%= image_tag(gallery.photo4.url(:thumb)) unless gallery.photo4.url.blank? %></td>
+                    <td><%= image_tag(gallery.photo5.url(:thumb)) unless gallery.photo5.url.blank? %></td>
+                </tr>
+                <tr>
+                    <td colspan="5"><%= link_to "Voir", user_gallery_path(@membre, gallery) %></td>
+                </tr>
+                <% end %>
+            </table>                
+            <% end %>
         </div>
     </div>
 </div>

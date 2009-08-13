@@ -1,13 +1,25 @@
-<h1>Nouvelle gallerie</h1>
+<div id="yui-main">
+    <div class="yui-b">
+        <h1>Nouvelle gallerie</h1>
+        
+        <div class="yui-g">
+            <% form_for([@membre, @gallery], :html => {:multipart => true}) do |f| %>
+              <%= f.error_messages %>
 
-<% form_for([@membre, @gallery], :html => {:multipart => true}) do |f| %>
-  <%= f.error_messages %>
+              <%= render :partial => 'form', :locals => {:f => f} %>
 
-  <%= render :partial => 'form', :locals => {:f => f} %>
+              <p>
+                <%= f.submit 'Enregistrer' %>
+              </p>
+            <% end %>
 
-  <p>
-    <%= f.submit 'Enregistrer' %>
-  </p>
-<% end %>
+            <%= link_to 'Retour', galleries_path %>
+        </div>
+    </div>
+</div>
 
-<%= link_to 'Retour', galleries_path %>
+<div class="yui-b sidebar">
+    <%= render :partial => "shared/identification" %>
+</div>
+
+
