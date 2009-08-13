@@ -16,8 +16,10 @@
         </div>
         
         <div class="yui-g">
-            <h2>Actions possibles</h2>
             <% if logged_in? %>
+            
+            <h2>Actions possibles</h2>
+            
             <table border="0" cellspacing="5" cellpadding="5">
                 <tr>
                     <td><%= link_to "+ Rédiger un article", new_user_article_path(@membre), :class => "lien-ajout" %></td>

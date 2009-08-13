@@ -3,12 +3,12 @@
     <%= f.date_select :date %>
   </p>
   <p>
-    <%= f.label :h_debut %><br />
-    <%= f.datetime_select :h_debut %>
+    <%= f.label :h_debut, "De :" %><br />
+    <%= f.datetime_select :h_debut, :discard_year => true, :discard_month => true, :discard_day => true %>
   </p>
   <p>
-    <%= f.label :h_fin %><br />
-    <%= f.datetime_select :h_fin %>
+    <%= f.label :h_fin, "A :" %><br />
+    <%= f.datetime_select :h_fin, :discard_year => true, :discard_month => true, :discard_day => true %>
   </p>
   <p>
     <%= f.label :lieu %><br />
@@ -16,7 +16,7 @@
   </p>
   <p>
     <%= f.label :description %><br />
-    <%= f.text_area :description %>
+    <%= f.text_area :description, :rows => 12 %>
   </p>
   <p>
     <%= f.label :picture, "Image" %><br/>

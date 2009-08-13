@@ -1,11 +1,9 @@
 <div id="yui-main">
     <div class="yui-b">
-        <div class="yui-g">
-            <h1 class="accroche">Nouvel Evenement</h1>
-        </div>
+        <h1 class="accroche">Enregistrer un Evénement</h1>
         
         <div class="yui-g">
-            <% form_for(@evenement), :html => { :multipart => true } do |f| %>
+            <% form_for(@evenement, :html => { :multipart => true }) do |f| %>
               <%= f.error_messages %>
 
               <%= render :partial => 'form', :locals => {:f => f} %>
