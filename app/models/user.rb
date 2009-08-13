@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
   has_many :articles
   has_many :galleries
   belongs_to :association
-  has_attached_file :avatar, :styles => { :thumb => "100x100>", :medium => "300x300>" }
+  has_attached_file :avatar, :styles => { :thumb => "100x100>", :medium => "300x300>" }, :default_url => "/images/missing_thumb.gif"
   
   # fetch the member and admin category users
   named_scope :membres, :conditions => ['usertype = ?', 2]
