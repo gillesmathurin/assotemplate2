@@ -4,7 +4,7 @@
         <h1>Profil de <%= @membre.login %></h1>
         
         <div class="yui-g">   
-            <p>
+            <p class="img-auteur">
                 <%= image_tag(@membre.avatar.url(:thumb), :size => "75x75") %>
             </p>         
             <p>
