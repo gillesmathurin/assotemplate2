@@ -204,6 +204,12 @@ div.yui-g>table.membre {
 	width: 90%;
 }
 
+p.question {
+	font-weight: bold;
+	font-size: 1.2em;
+	color: teal;
+}
+
 /* @group Flash-Errors */
 
 

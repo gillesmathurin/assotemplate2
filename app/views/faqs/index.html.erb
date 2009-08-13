@@ -11,9 +11,8 @@
                     <%= faq.reponse %>
                 </p>
                 <% if admin? %>
-                <p>
-                   <%= link_to 'Modifier', edit_faq_path(faq) %> 
-                </p>
+                <p><%= link_to 'Ajouter une faq', new_faq_path %></p>
+                <p><%= link_to 'Modifier', edit_faq_path(faq) %></p>
                 <p>
                     <%= link_to 'Supprimer', faq, :confirm => 'Are you sure?', :method => :delete %>
                 </p>
@@ -25,11 +24,7 @@
     </div>
 </div>
 
-<div class="yui-b sidebar">
-    <% if admin? %>
-    <p><%= link_to 'Ajouter une faq', new_faq_path %></p>
-    <% end %>
-    
+<div class="yui-b sidebar">    
     <%= render :partial => "shared/identification" %>
 </div>
 
