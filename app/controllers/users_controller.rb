@@ -23,6 +23,7 @@ class UsersController < ApplicationController
   
   def show
     @membre = User.find(params[:id])
+    @association = Association.first
   end
   
   def edit

@@ -1,8 +1,7 @@
 <div id="yui-main">
     <div class="yui-b">
-        <div class="yui-g">
-            <h1>Rédiger un Article</h1>
-        </div>
+        
+        <h1>Rédiger un Article</h1>
         
         <div class="yui-g">
             <% form_for(@article, :html => {:multipart => true}) do |f| %>
@@ -17,6 +16,12 @@
 
             <%= link_to 'Retour', articles_path %>
         </div>
+    </div>
+</div>
+
+<div class="yui-b sidebar">
+    <div id="yui-g">
+        <%= render :partial => "shared/identification" %>
     </div>
 </div>
 
