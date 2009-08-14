@@ -61,7 +61,7 @@ class ArticlesController < ApplicationController
   # POST /articles.xml
   def create
     @article = Article.new(params[:article])
-    @article.author = current_user
+    @article.user = current_user
 
     respond_to do |format|
       if @article.save
