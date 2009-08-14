@@ -3,7 +3,15 @@
         
         <h1>Nos Membres</h1>
         
-        <div class="yui-g">                        
+        <div class="yui-g">
+            
+            <% if admin? %>
+            <p>
+                <%= link_to "Voir compte Administrateur", user_path(current_user),
+                 :class => "lien-ajout" %>
+            </p>
+            <% end %>
+                                    
             <% if !@membres.blank? %>
             <table border="1" class="membre">
                 <% @membres.in_groups_of(4, false) do |group| %>
